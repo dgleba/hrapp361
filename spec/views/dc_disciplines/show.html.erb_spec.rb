@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "dc_disciplines/show", type: :view do
   before(:each) do
     @dc_discipline = assign(:dc_discipline, DcDiscipline.create!(
-      :StfEmployee => nil,
-      :DisciplineBy => "Discipline By",
-      :DcLevel => nil,
-      :DcStream => nil,
-      :InfractionDescription => "MyText",
-      :DcAction => "MyText",
-      :DcComment => "MyText",
+      :stf_employee => nil,
+      :discipline_by => "Discipline By",
+      :dc_level => nil,
+      :dc_stream => nil,
+      :infraction_description => "MyText",
+      :dc_action => "MyText",
+      :dc_comment => "MyText",
       :output => "MyText",
       :sort_order => 2,
       :active_status => 3

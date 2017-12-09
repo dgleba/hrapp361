@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "dc_disciplines/new", type: :view do
   before(:each) do
     assign(:dc_discipline, DcDiscipline.new(
-      :StfEmployee => nil,
-      :DisciplineBy => "MyString",
-      :DcLevel => nil,
-      :DcStream => nil,
-      :InfractionDescription => "MyText",
-      :DcAction => "MyText",
-      :DcComment => "MyText",
+      :stf_employee => nil,
+      :discipline_by => "MyString",
+      :dc_level => nil,
+      :dc_stream => nil,
+      :infraction_description => "MyText",
+      :dc_action => "MyText",
+      :dc_comment => "MyText",
       :output => "MyText",
       :sort_order => 1,
       :active_status => 1
@@ -21,19 +21,19 @@ RSpec.describe "dc_disciplines/new", type: :view do
 
     assert_select "form[action=?][method=?]", dc_disciplines_path, "post" do
 
-      assert_select "input#dc_discipline_StfEmployee_id[name=?]", "dc_discipline[StfEmployee_id]"
+      assert_select "input#dc_discipline_stf_employee_id[name=?]", "dc_discipline[stf_employee_id]"
 
-      assert_select "input#dc_discipline_DisciplineBy[name=?]", "dc_discipline[DisciplineBy]"
+      assert_select "input#dc_discipline_discipline_by[name=?]", "dc_discipline[discipline_by]"
 
-      assert_select "input#dc_discipline_DcLevel_id[name=?]", "dc_discipline[DcLevel_id]"
+      assert_select "input#dc_discipline_dc_level_id[name=?]", "dc_discipline[dc_level_id]"
 
-      assert_select "input#dc_discipline_DcStream_id[name=?]", "dc_discipline[DcStream_id]"
+      assert_select "input#dc_discipline_dc_stream_id[name=?]", "dc_discipline[dc_stream_id]"
 
-      assert_select "textarea#dc_discipline_InfractionDescription[name=?]", "dc_discipline[InfractionDescription]"
+      assert_select "textarea#dc_discipline_infraction_description[name=?]", "dc_discipline[infraction_description]"
 
-      assert_select "textarea#dc_discipline_DcAction[name=?]", "dc_discipline[DcAction]"
+      assert_select "textarea#dc_discipline_dc_action[name=?]", "dc_discipline[dc_action]"
 
-      assert_select "textarea#dc_discipline_DcComment[name=?]", "dc_discipline[DcComment]"
+      assert_select "textarea#dc_discipline_dc_comment[name=?]", "dc_discipline[dc_comment]"
 
       assert_select "textarea#dc_discipline_output[name=?]", "dc_discipline[output]"
 

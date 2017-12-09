@@ -2,14 +2,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :StfEmployee %>
-    <%= f.input :DateDiscipline %>
-    <%= f.input :DisciplineBy %>
-    <%= f.association :DcLevel %>
-    <%= f.association :DcStream %>
-    <%= f.input :InfractionDescription %>
-    <%= f.input :DcAction %>
-    <%= f.input :DcComment %>
+    <%= f.input :date_discipline %>
+    <%= f.association :stf_employee %>
+    <%= f.input :discipline_by %>
+    <%= f.association :dc_level %>
+    <%= f.association :dc_stream %>
+    <%= f.input :infraction_description %>
+    <%= f.input :dc_action %>
+    <%= f.input :dc_comment %>
     <%= f.input :output %>
     <%= f.input :sort_order %>
     <%= f.input :active_status %>

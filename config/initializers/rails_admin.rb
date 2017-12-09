@@ -1,7 +1,7 @@
 RailsAdmin.config do |config|
   
   config.main_app_name = Proc.new {
-    ["LPA346", "(#{Time.zone.now.to_s(:time)})"]
+    ["HRapp361", "(#{Time.zone.now.to_s(:time)})"]
   }
   
   config.total_columns_width = 9999999
@@ -77,11 +77,11 @@ RailsAdmin.config do |config|
   #  http://stackoverflow.com/questions/11658281/rails-admin-display-name-instead-of-id
   # 2017-05-16 kwruby 
   # see the model for this item as well.
-  config.model 'QuestionList' do
-    object_label_method do
-      :ra_question_list_nameref
-    end
-  end
+  # config.model 'QuestionList' do
+    # object_label_method do
+      # :ra_question_list_nameref
+    # end
+  # end
 
 
 end

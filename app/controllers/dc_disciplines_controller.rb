@@ -66,6 +66,6 @@ before_filter :authenticate_user!
 
   # Only allow a trusted parameter "white list" through.
   def dc_discipline_params
-    params.require(:dc_discipline).permit(:StfEmployee_id, :DateDiscipline, :DisciplineBy, :DcLevel_id, :DcStream_id, :InfractionDescription, :DcAction, :DcComment, :output, :sort_order, :active_status)
+    params.require(:dc_discipline).permit(:date_discipline, :stf_employee_id, :discipline_by, :dc_level_id, :dc_stream_id, :infraction_description, :dc_action, :dc_comment, :output, :sort_order, :active_status)
   end
 end

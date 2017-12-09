@@ -1,5 +1,5 @@
 class DcDiscipline < ApplicationRecord
-  belongs_to :StfEmployee
-  belongs_to :DcLevel
-  belongs_to :DcStream
+  belongs_to :stf_employee
+  belongs_to :dc_level
+  belongs_to :dc_stream
 end

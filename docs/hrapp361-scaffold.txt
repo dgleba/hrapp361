@@ -20,9 +20,18 @@ rails generate scaffold DcStream name:string active_status:integer sort_order:in
 
 # Then create parent tables.
 
-rails generate scaffold DcDiscipline  StfEmployee:references DateDiscipline:date DisciplineBy DcLevel:references DcStream:references   InfractionDescription:text DcAction:text DcComment:text output:text sort_order:integer active_status:integer -f
+rails generate scaffold DcDiscipline  date_discipline:date stf_employee:references  discipline_by dc_level:references dc_stream:references infraction_description:text dc_action:text dc_comment:text output:text sort_order:integer active_status:integer -f
 
 
+
+rake aborted!
+SyntaxError: /srv/share/hrapp361/spec/factories/dc_disciplines.rb:6: syntax error, unexpected keyword_nil, expecting keyword_do or '{' or '('
+/srv/share/hrapp361/config/environment.rb:5:in `<top (required)>'
+/home/albe/.rbenv/versions/2.3.0/bin/bundle:23:in `load'
+/home/albe/.rbenv/versions/2.3.0/bin/bundle:23:in `<main>'
+Tasks: TOP => db:migrate => environment
+(See full trace by running task with --trace)
+albe@pmdsdata4:/srv/share/hrapp361$
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

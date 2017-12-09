@@ -19,7 +19,7 @@ ENV['RAILS_ADMIN_THEME'] = 'material'
 puts '___1____'
 puts ENV.inspect
 
-module LPA346
+module HRapp361
   class Application < Rails::Application
   
     #config # https://github.com/laserlemon/figaro/issues/186

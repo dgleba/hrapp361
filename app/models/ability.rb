@@ -18,8 +18,8 @@ class Ability
       can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
       # can :read, :all 
-       can :read,  [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList , User, Role ]
-      can [ :create, :update, ], [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList ]
+       # can :read,  [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList , User, Role ]
+      # can [ :create, :update, ], [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
       # can [ :destroy, ], [ Product , ProductFeature,  CountryOfOrigin  ]
       can :export,  :all 
@@ -29,13 +29,13 @@ class Ability
       # can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
       # can :read, [  Role, User, ]
-      can :read, [  Answer, PartNumber, ProcessStep,  Question, Survey, QuestionList ]
-      can [ :create, :update, ], [  Answer ]
+      # can :read, [  Answer, PartNumber, ProcessStep,  Question, Survey, QuestionList ]
+      # can [ :create, :update, ], [  Answer ]
       can :export,  :all 
 
     elsif user.lr_future4?
-      can :read, [ Product, Role, User]
-      can [ :create, :update, :destroy, ], [ Product, ]
+      # can :read, [ Product, Role, User]
+      # can [ :create, :update, :destroy, ], [ Product, ]
       
     elsif user.lr_readonly?
       can :read, Role
