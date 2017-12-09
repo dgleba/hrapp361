@@ -79,3 +79,4 @@ gem 'enum_help'
   gem "yaml_db", :git => "git://github.com/dgleba/yaml_db.git"
   gem 'seed_dump'
 #
+gem 'signature-pad-rails'

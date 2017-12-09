@@ -258,6 +258,9 @@ GEM
       thor (~> 0.14)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
+    signature-pad-rails (0.5)
+      jquery-rails (>= 3.0.0, < 5.1)
+      rails (>= 3.0.0, < 5.1)
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -334,6 +337,7 @@ DEPENDENCIES
   seed_dump
   select2-rails
   shoulda-matchers
+  signature-pad-rails
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

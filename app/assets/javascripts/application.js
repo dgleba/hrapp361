@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require signature-pad
 //= require select2
 //= require cocoon
 //= require tether
