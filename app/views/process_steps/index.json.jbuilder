@@ -1,1 +1,0 @@
-json.array! @process_steps, partial: 'process_steps/process_step', as: :process_step

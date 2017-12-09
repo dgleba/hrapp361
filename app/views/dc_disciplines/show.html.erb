@@ -1,0 +1,59 @@
+
+<p>
+  <strong>Stfemployee:</strong>
+  <%= @dc_discipline.StfEmployee %>
+</p>
+
+<p>
+  <strong>Datediscipline:</strong>
+  <%= @dc_discipline.DateDiscipline %>
+</p>
+
+<p>
+  <strong>Disciplineby:</strong>
+  <%= @dc_discipline.DisciplineBy %>
+</p>
+
+<p>
+  <strong>Dclevel:</strong>
+  <%= @dc_discipline.DcLevel %>
+</p>
+
+<p>
+  <strong>Dcstream:</strong>
+  <%= @dc_discipline.DcStream %>
+</p>
+
+<p>
+  <strong>Infractiondescription:</strong>
+  <%= @dc_discipline.InfractionDescription %>
+</p>
+
+<p>
+  <strong>Dcaction:</strong>
+  <%= @dc_discipline.DcAction %>
+</p>
+
+<p>
+  <strong>Dccomment:</strong>
+  <%= @dc_discipline.DcComment %>
+</p>
+
+<p>
+  <strong>Output:</strong>
+  <%= @dc_discipline.output %>
+</p>
+
+<p>
+  <strong>Sort order:</strong>
+  <%= @dc_discipline.sort_order %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @dc_discipline.active_status %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_dc_discipline_path(@dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', dc_disciplines_path, class: "btn btn-default" %>

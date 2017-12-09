@@ -1,0 +1,21 @@
+<%= simple_form_for(@dc_discipline) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :StfEmployee %>
+    <%= f.input :DateDiscipline %>
+    <%= f.input :DisciplineBy %>
+    <%= f.association :DcLevel %>
+    <%= f.association :DcStream %>
+    <%= f.input :InfractionDescription %>
+    <%= f.input :DcAction %>
+    <%= f.input :DcComment %>
+    <%= f.input :output %>
+    <%= f.input :sort_order %>
+    <%= f.input :active_status %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success'%>
+  </div>
+<% end %>

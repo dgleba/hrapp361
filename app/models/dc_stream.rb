@@ -1,0 +1,2 @@
+class DcStream < ApplicationRecord
+end

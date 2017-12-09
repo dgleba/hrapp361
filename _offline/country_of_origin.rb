@@ -1,2 +1,0 @@
-class CountryOfOrigin < ApplicationRecord
-end

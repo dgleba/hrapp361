@@ -1,0 +1,24 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @dc_stream.name %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @dc_stream.active_status %>
+</p>
+
+<p>
+  <strong>Sort order:</strong>
+  <%= @dc_stream.sort_order %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @dc_stream.comment %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_dc_stream_path(@dc_stream), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', dc_streams_path, class: "btn btn-default" %>

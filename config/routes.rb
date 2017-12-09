@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  resources :dc_streams
+  resources :dc_levels
+  resources :stf_employees
+  resources :dc_disciplines
   resources :audit_counts
   resources :answers
   resources :questions

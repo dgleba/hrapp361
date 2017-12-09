@@ -41,9 +41,9 @@ date ; set +vx  ; set -vx ; # echo off, then echo on
 
 # settings...
 
-prjname="lpa346"
+prjname="hrapp361"
 dpath="/srv/web/$prjname"
-vport="1293"
+vport="12999"
 
 
 

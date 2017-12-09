@@ -1,1 +1,0 @@
-json.partial! "process_steps/process_step", process_step: @process_step

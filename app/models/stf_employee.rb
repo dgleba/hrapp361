@@ -1,0 +1,2 @@
+class StfEmployee < ApplicationRecord
+end

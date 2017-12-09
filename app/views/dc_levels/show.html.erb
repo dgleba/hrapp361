@@ -1,0 +1,24 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @dc_level.name %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @dc_level.active_status %>
+</p>
+
+<p>
+  <strong>Sort order:</strong>
+  <%= @dc_level.sort_order %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @dc_level.comment %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_dc_level_path(@dc_level), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', dc_levels_path, class: "btn btn-default" %>

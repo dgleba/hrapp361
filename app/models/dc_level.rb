@@ -1,0 +1,2 @@
+class DcLevel < ApplicationRecord
+end
