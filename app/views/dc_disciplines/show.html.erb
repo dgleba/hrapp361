@@ -1,4 +1,5 @@
 
+
 <p>
   <strong>Date discipline:</strong>
   <%= @dc_discipline.date_discipline %>
@@ -42,12 +43,14 @@
 <p>
   <strong>Output:</strong>
   <%= @dc_discipline.output %>
+  
   <div class="sigPad signed">
-  <div class="sigWrapper">
-    <div class="typed"></div>
-    <canvas class="pad" height="111" width="311"></canvas>
+    <div class="sigWrapper">
+      <div class="typed"></div>
+      <canvas class="pad" height="111" width="311"></canvas>
+    </div>
   </div>
-</div>
+
 </p>
 
 <p>
@@ -65,10 +68,10 @@
 <%= link_to 'Back', dc_disciplines_path, class: "btn btn-default" %>
 
 
+
 <script>
 $(document).ready(function() {
-      //   
-      var sig = #{@dc_discipline.output};
+      var sig = <%= raw @dc_discipline.output %>;
       $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
       });
 </script>      
