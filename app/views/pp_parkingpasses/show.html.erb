@@ -1,0 +1,44 @@
+
+<p>
+  <strong>En name:</strong>
+  <%= @pp_parkingpass.en_name %>
+</p>
+
+<p>
+  <strong>Parking pass:</strong>
+  <%= @pp_parkingpass.parking_pass %>
+</p>
+
+<p>
+  <strong>Dept:</strong>
+  <%= @pp_parkingpass.dept %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @pp_parkingpass.company %>
+</p>
+
+<p>
+  <strong>Grouping:</strong>
+  <%= @pp_parkingpass.grouping %>
+</p>
+
+<p>
+  <strong>Estatus:</strong>
+  <%= @pp_parkingpass.estatus %>
+</p>
+
+<p>
+  <strong>Supervisor:</strong>
+  <%= @pp_parkingpass.supervisor %>
+</p>
+
+<p>
+  <strong>En clock:</strong>
+  <%= @pp_parkingpass.en_clock %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_pp_parkingpass_path(@pp_parkingpass), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', pp_parkingpasses_path, class: "btn btn-default" %>

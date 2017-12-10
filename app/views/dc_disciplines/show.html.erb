@@ -42,6 +42,12 @@
 <p>
   <strong>Output:</strong>
   <%= @dc_discipline.output %>
+  <div class="sigPad signed">
+  <div class="sigWrapper">
+    <div class="typed"></div>
+    <canvas class="pad" height="111" width="311"></canvas>
+  </div>
+</div>
 </p>
 
 <p>
@@ -57,3 +63,12 @@
 <br>
 <%= link_to 'Edit', edit_dc_discipline_path(@dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
 <%= link_to 'Back', dc_disciplines_path, class: "btn btn-default" %>
+
+
+<script>
+$(document).ready(function() {
+      //   
+      var sig = #{@dc_discipline.output};
+      $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
+      });
+</script>      

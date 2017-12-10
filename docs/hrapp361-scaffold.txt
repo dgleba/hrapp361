@@ -23,6 +23,17 @@ rails generate scaffold DcStream name:string active_status:integer sort_order:in
 rails generate scaffold DcDiscipline  date_discipline:date stf_employee:references  discipline_by dc_level:references dc_stream:references infraction_description:text dc_action:text dc_comment:text output:text sort_order:integer active_status:integer -f
 
 
+# parking..
+
+
+rails generate scaffold PpParkingpass  en_name:string parking_pass:string dept:string company:string grouping:string estatus:string supervisor:string en_clock:string --no-migration
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 rake aborted!
 SyntaxError: /srv/share/hrapp361/spec/factories/dc_disciplines.rb:6: syntax error, unexpected keyword_nil, expecting keyword_do or '{' or '('

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :pp_parkingpasses
   resources :dc_streams
   resources :dc_levels
   resources :stf_employees

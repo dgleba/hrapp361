@@ -1,0 +1,18 @@
+<%= simple_form_for(@pp_parkingpass) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :en_name %>
+    <%= f.input :parking_pass %>
+    <%= f.input :dept %>
+    <%= f.input :company %>
+    <%= f.input :grouping %>
+    <%= f.input :estatus %>
+    <%= f.input :supervisor %>
+    <%= f.input :en_clock %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success'%>
+  </div>
+<% end %>

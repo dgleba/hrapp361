@@ -1,0 +1,2 @@
+class PpParkingpass < ApplicationRecord
+end

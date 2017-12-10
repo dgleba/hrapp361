@@ -1,5 +1,27 @@
+
+Rails.application.eager_load!
+
 RailsAdmin.config do |config|
-  
+
+
+  # config all models at once...
+  # ActiveRecord::Base.descendants.each do |imodel|
+    # config.model "#{imodel.name}" do
+      # #
+      # # list do
+        # # exclude_fields :created_at, :updated_at
+      # # end
+      # #
+      # edit do
+        # fields do
+          # help false
+        # end
+      # end
+    # end
+  # end
+  # # https://github.com/sferik/rails_admin/wiki/Models
+
+ 
   config.main_app_name = Proc.new {
     ["HRapp361", "(#{Time.zone.now.to_s(:time)})"]
   }
@@ -72,6 +94,17 @@ RailsAdmin.config do |config|
   config.compact_show_view = false
 
   
+  config.model 'PpParkingpass' do
+    edit do
+      fields do
+        help false
+      end
+    end
+  end
+ 
+
+ 
+ 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
   #  http://stackoverflow.com/questions/11658281/rails-admin-display-name-instead-of-id
