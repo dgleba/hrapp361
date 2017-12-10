@@ -1,5 +1,5 @@
 
-// see passenger.js
+// this note from rental_records example.. see passenger.js
 
 var dgoptions = {
   bgColour : '#F0FEEF'

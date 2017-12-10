@@ -2,48 +2,19 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-
-    <p>
-      <strong>Date discipline:</strong>
-      <%= @dc_discipline.date_discipline %>
-    </p>
-
-    <p>
-      <strong>Stf employee:</strong>
-      <%= @dc_discipline.stf_employee %>
-    </p>
-
-    <p>
-      <strong>Discipline by:</strong>
-      <%= @dc_discipline.discipline_by %>
-    </p>
-
-    <p>
-      <strong>Dc level:</strong>
-      <%= @dc_discipline.dc_level %>
-    </p>
-
-    <p>
-      <strong>Dc stream:</strong>
-      <%= @dc_discipline.dc_stream %>
-    </p>
-
-    <p>
-      <strong>Infraction description:</strong>
-      <%= @dc_discipline.infraction_description %>
-    </p>
-
-    <p>
-      <strong>Dc action:</strong>
-      <%= @dc_discipline.dc_action %>
-    </p>
-
-    <p>
-      <strong>Dc comment:</strong>
-      <%= @dc_discipline.dc_comment %>
-    </p>
-
+    <%= f.input :date_discipline %>
+    <%= f.association :stf_employee %>
+    <%= f.input :discipline_by %>
+    <%= f.association :dc_level %>
+    <%= f.association :dc_stream %>
+    <%= f.input :infraction_description %>
+    <%= f.input :dc_action %>
+    <%= f.input :dc_comment %>
     
+    <%= f.input :sort_order %>
+    <%= f.input :active_status %>
+
+     
 
     <style>
     .sigPad {
