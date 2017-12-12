@@ -1,4 +1,8 @@
 
+<p>
+  <strong>Title:</strong>
+  <%= @dc_discipline.title %>
+</p>
 
 <p>
   <strong>Date discipline:</strong>
@@ -6,8 +10,8 @@
 </p>
 
 <p>
-  <strong>Stf employee:</strong>
-  <%= @dc_discipline.stf_employee %>
+  <strong>Employee:</strong>
+  <%= @dc_discipline.employee %>
 </p>
 
 <p>
@@ -43,13 +47,6 @@
 <p>
   <strong>Output:</strong>
   <%= @dc_discipline.output %>
-  
-  <div class="sigPad signed">
-    <div class="sigWrapper">
-       <canvas class="pad" height="111" width="311"></canvas>
-    </div>
-  </div>
-
 </p>
 
 <p>
@@ -65,12 +62,3 @@
 <br>
 <%= link_to 'Edit', edit_dc_discipline_path(@dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
 <%= link_to 'Back', dc_disciplines_path, class: "btn btn-default" %>
-
-
-
-<script>
-$(document).ready(function() {
-      var sig = <%= raw @dc_discipline.output %>;
-      $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
-      });
-</script>      

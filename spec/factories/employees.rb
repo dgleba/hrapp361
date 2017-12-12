@@ -1,9 +1,8 @@
 FactoryGirl.define do
-  factory :stf_employee do
-    clocknum "MyString"
+  factory :employee do
     name "MyString"
+    clock "MyString"
     active_status 1
     sort 1
-    comment "MyString"
   end
 end

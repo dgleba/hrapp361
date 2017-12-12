@@ -1,12 +1,11 @@
-<%= simple_form_for(@stf_employee) do |f| %>
+<%= simple_form_for(@employee) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :clocknum %>
     <%= f.input :name %>
+    <%= f.input :clock %>
     <%= f.input :active_status %>
     <%= f.input :sort %>
-    <%= f.input :comment %>
   </div>
 
   <div class="form-actions">

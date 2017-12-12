@@ -2,13 +2,15 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :en_name %>
+    <%= f.input :title %>
+    <%= f.association :employee %>
     <%= f.input :parking_pass %>
     <%= f.input :dept %>
     <%= f.input :company %>
     <%= f.input :grouping %>
-    <%= f.input :estatus %>
+    <%= f.input :en_status %>
     <%= f.input :supervisor %>
+    <%= f.input :en_name %>
     <%= f.input :en_clock %>
   </div>
 

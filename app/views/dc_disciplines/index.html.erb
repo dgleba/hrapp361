@@ -12,7 +12,7 @@
   <div class="col-sm-3">
     <%= search_form_for @q, class: 'search-form' do |f| %>
       <div class="input-group">
-        <%= f.search_field :date_discipline_cont, class: 'form-control' %>
+        <%= f.search_field :title_cont, class: 'form-control' %>
         <span class="input-group-btn">
           <button class="btn btn-primary">Search <i class="fa fa-search"></i>
           </button>
@@ -36,8 +36,9 @@
   <thead>
     <tr>
       <th colspan="1"></th>
-            <th>Date discipline</th>
-      <th>Stf employee</th>
+            <th>Title</th>
+      <th>Date discipline</th>
+      <th>Employee</th>
       <th>Discipline by</th>
       <th>Dc level</th>
       <th>Dc stream</th>
@@ -61,8 +62,9 @@
           </div>
         </td>
         
+        <td><%= dc_discipline.title %></td>
         <td><%= dc_discipline.date_discipline %></td>
-        <td><%= dc_discipline.stf_employee %></td>
+        <td><%= dc_discipline.employee %></td>
         <td><%= dc_discipline.discipline_by %></td>
         <td><%= dc_discipline.dc_level %></td>
         <td><%= dc_discipline.dc_stream %></td>

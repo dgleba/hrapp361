@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :dc_discipline do
-    date_discipline "2017-12-09"
-    stf_employee nil
+    title "MyString"
+    date_discipline "2017-12-10"
+    employee nil
     discipline_by "MyString"
     dc_level nil
     dc_stream nil

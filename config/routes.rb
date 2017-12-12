@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
  
   resources :pp_parkingpasses
+  resources :dc_disciplines
+  resources :employees
   resources :dc_streams
   resources :dc_levels
-  resources :stf_employees
-  resources :dc_disciplines
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 

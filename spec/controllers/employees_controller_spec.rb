@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe StfEmployeesController, type: :controller do
+RSpec.describe EmployeesController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # StfEmployee. As you add validations to StfEmployee, be sure to
+  # Employee. As you add validations to Employee, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe StfEmployeesController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # StfEmployeesController. Be sure to keep this updated too.
+  # EmployeesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      stf_employee = StfEmployee.create! valid_attributes
+      employee = Employee.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -51,8 +51,8 @@ RSpec.describe StfEmployeesController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      stf_employee = StfEmployee.create! valid_attributes
-      get :show, params: {id: stf_employee.to_param}, session: valid_session
+      employee = Employee.create! valid_attributes
+      get :show, params: {id: employee.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe StfEmployeesController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      stf_employee = StfEmployee.create! valid_attributes
-      get :edit, params: {id: stf_employee.to_param}, session: valid_session
+      employee = Employee.create! valid_attributes
+      get :edit, params: {id: employee.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new StfEmployee" do
+      it "creates a new Employee" do
         expect {
-          post :create, params: {stf_employee: valid_attributes}, session: valid_session
-        }.to change(StfEmployee, :count).by(1)
+          post :create, params: {employee: valid_attributes}, session: valid_session
+        }.to change(Employee, :count).by(1)
       end
 
-      it "redirects to the created stf_employee" do
-        post :create, params: {stf_employee: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(StfEmployee.last)
+      it "redirects to the created employee" do
+        post :create, params: {employee: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(Employee.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {stf_employee: invalid_attributes}, session: valid_session
+        post :create, params: {employee: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe StfEmployeesController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested stf_employee" do
-        stf_employee = StfEmployee.create! valid_attributes
-        put :update, params: {id: stf_employee.to_param, stf_employee: new_attributes}, session: valid_session
-        stf_employee.reload
+      it "updates the requested employee" do
+        employee = Employee.create! valid_attributes
+        put :update, params: {id: employee.to_param, employee: new_attributes}, session: valid_session
+        employee.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the stf_employee" do
-        stf_employee = StfEmployee.create! valid_attributes
-        put :update, params: {id: stf_employee.to_param, stf_employee: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(stf_employee)
+      it "redirects to the employee" do
+        employee = Employee.create! valid_attributes
+        put :update, params: {id: employee.to_param, employee: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(employee)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        stf_employee = StfEmployee.create! valid_attributes
-        put :update, params: {id: stf_employee.to_param, stf_employee: invalid_attributes}, session: valid_session
+        employee = Employee.create! valid_attributes
+        put :update, params: {id: employee.to_param, employee: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested stf_employee" do
-      stf_employee = StfEmployee.create! valid_attributes
+    it "destroys the requested employee" do
+      employee = Employee.create! valid_attributes
       expect {
-        delete :destroy, params: {id: stf_employee.to_param}, session: valid_session
-      }.to change(StfEmployee, :count).by(-1)
+        delete :destroy, params: {id: employee.to_param}, session: valid_session
+      }.to change(Employee, :count).by(-1)
     end
 
-    it "redirects to the stf_employees list" do
-      stf_employee = StfEmployee.create! valid_attributes
-      delete :destroy, params: {id: stf_employee.to_param}, session: valid_session
-      expect(response).to redirect_to(stf_employees_url)
+    it "redirects to the employees list" do
+      employee = Employee.create! valid_attributes
+      delete :destroy, params: {id: employee.to_param}, session: valid_session
+      expect(response).to redirect_to(employees_url)
     end
   end
 

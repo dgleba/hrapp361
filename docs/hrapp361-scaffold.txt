@@ -2,7 +2,7 @@
 This app was started by copying lpa346 on 2017-12-08_Fri_22.32-PM.
    git clone https://github.com/dgleba/lpa346.git hrapp361
 
- 
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Title:  .  version controlled.
@@ -13,22 +13,77 @@ Script for scaffold:
 
 # create support tables first..
 
-rails generate scaffold StfEmployee clocknum:string name:string active_status:integer sort:integer comment -f
-# --no-migration -f
-rails generate scaffold DcLevel name:string active_status:integer sort_order:integer comment -f
-rails generate scaffold DcStream name:string active_status:integer sort_order:integer comment -f
+rails destroy scaffold StfEmployee
+
+rails g scaffold Employee  name clock active_status:integer sort:integer  --no-migration \
+ -f
+ 
+rails generate scaffold DcLevel name:string active_status:integer sort_order:integer comment --no-migration
+   -f
+   
+rails generate scaffold DcStream name:string active_status:integer sort_order:integer comment --no-migration
+  -f
 
 # Then create parent tables.
 
-rails generate scaffold DcDiscipline  date_discipline:date stf_employee:references  discipline_by dc_level:references dc_stream:references infraction_description:text dc_action:text dc_comment:text output:text sort_order:integer active_status:integer -f
+rails generate scaffold DcDiscipline  title \
+date_discipline:date employee:references  discipline_by dc_level:references dc_stream:references infraction_description:text \
+dc_action:text dc_comment:text output:text \
+sort_order:integer active_status:integer   \
+ -f
 
 
 # parking..
 
 
+rails generate scaffold PpParkingpass title  \
+  employee:references parking_pass:string dept:string company:string grouping:string en_status:string \
+  supervisor:string en_name:string en_clock:string \
+  --no-migration
+  -f
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+old..
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2017-12-10
+
+
+was, did not reference employee
+
 rails generate scaffold PpParkingpass  en_name:string parking_pass:string dept:string company:string grouping:string estatus:string supervisor:string en_clock:string --no-migration
 
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2017-12-10
+
+was stfemployee..
+
+rails generate scaffold StfEmployee clocknum:string name:string active_status:integer sort:integer comment \
+  --no-migration
+  -f
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,6 +101,9 @@ albe@pmdsdata4:/srv/share/hrapp361$
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,7 +139,6 @@ rails generate scaffold AuditCount  process_step  num_audits:integer --no-migrat
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -12,7 +12,7 @@
   <div class="col-sm-3">
     <%= search_form_for @q, class: 'search-form' do |f| %>
       <div class="input-group">
-        <%= f.search_field :en_name_cont, class: 'form-control' %>
+        <%= f.search_field :title_cont, class: 'form-control' %>
         <span class="input-group-btn">
           <button class="btn btn-primary">Search <i class="fa fa-search"></i>
           </button>
@@ -36,13 +36,15 @@
   <thead>
     <tr>
       <th colspan="1"></th>
-            <th>En name</th>
+            <th>Title</th>
+      <th>Employee</th>
       <th>Parking pass</th>
       <th>Dept</th>
       <th>Company</th>
       <th>Grouping</th>
-      <th>Estatus</th>
+      <th>En status</th>
       <th>Supervisor</th>
+      <th>En name</th>
       <th>En clock</th>
     </tr>
   </thead>
@@ -58,13 +60,15 @@
           </div>
         </td>
         
-        <td><%= pp_parkingpass.en_name %></td>
+        <td><%= pp_parkingpass.title %></td>
+        <td><%= pp_parkingpass.employee %></td>
         <td><%= pp_parkingpass.parking_pass %></td>
         <td><%= pp_parkingpass.dept %></td>
         <td><%= pp_parkingpass.company %></td>
         <td><%= pp_parkingpass.grouping %></td>
-        <td><%= pp_parkingpass.estatus %></td>
+        <td><%= pp_parkingpass.en_status %></td>
         <td><%= pp_parkingpass.supervisor %></td>
+        <td><%= pp_parkingpass.en_name %></td>
         <td><%= pp_parkingpass.en_clock %></td>
       </tr>
     <% end %>

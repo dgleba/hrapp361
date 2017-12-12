@@ -4,7 +4,8 @@ RSpec.describe "dc_disciplines/index", type: :view do
   before(:each) do
     assign(:dc_disciplines, [
       DcDiscipline.create!(
-        :stf_employee => nil,
+        :title => "Title",
+        :employee => nil,
         :discipline_by => "Discipline By",
         :dc_level => nil,
         :dc_stream => nil,
@@ -16,7 +17,8 @@ RSpec.describe "dc_disciplines/index", type: :view do
         :active_status => 3
       ),
       DcDiscipline.create!(
-        :stf_employee => nil,
+        :title => "Title",
+        :employee => nil,
         :discipline_by => "Discipline By",
         :dc_level => nil,
         :dc_stream => nil,
@@ -32,6 +34,7 @@ RSpec.describe "dc_disciplines/index", type: :view do
 
   it "renders a list of dc_disciplines" do
     render
+    assert_select "tr>td", :text => "Title".to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => "Discipline By".to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2

@@ -96,13 +96,20 @@ RailsAdmin.config do |config|
   
   config.model 'PpParkingpass' do
     edit do
+        field :employee
+        field :parking_pass
       fields do
         help false
       end
     end
+    list do
+      field :id
+      field :employee
+      field :parking_pass
+      field :created_at
+      field :updated_at
+    end
   end
- 
-
  
  
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

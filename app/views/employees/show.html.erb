@@ -1,0 +1,24 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @employee.name %>
+</p>
+
+<p>
+  <strong>Clock:</strong>
+  <%= @employee.clock %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @employee.active_status %>
+</p>
+
+<p>
+  <strong>Sort:</strong>
+  <%= @employee.sort %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_employee_path(@employee), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', employees_path, class: "btn btn-default" %>

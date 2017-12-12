@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "dc_disciplines/show", type: :view do
   before(:each) do
     @dc_discipline = assign(:dc_discipline, DcDiscipline.create!(
-      :stf_employee => nil,
+      :title => "Title",
+      :employee => nil,
       :discipline_by => "Discipline By",
       :dc_level => nil,
       :dc_stream => nil,
@@ -18,6 +19,7 @@ RSpec.describe "dc_disciplines/show", type: :view do
 
   it "renders attributes in <p>" do
     render
+    expect(rendered).to match(/Title/)
     expect(rendered).to match(//)
     expect(rendered).to match(/Discipline By/)
     expect(rendered).to match(//)

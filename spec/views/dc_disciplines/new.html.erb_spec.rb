@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "dc_disciplines/new", type: :view do
   before(:each) do
     assign(:dc_discipline, DcDiscipline.new(
-      :stf_employee => nil,
+      :title => "MyString",
+      :employee => nil,
       :discipline_by => "MyString",
       :dc_level => nil,
       :dc_stream => nil,
@@ -21,7 +22,9 @@ RSpec.describe "dc_disciplines/new", type: :view do
 
     assert_select "form[action=?][method=?]", dc_disciplines_path, "post" do
 
-      assert_select "input#dc_discipline_stf_employee_id[name=?]", "dc_discipline[stf_employee_id]"
+      assert_select "input#dc_discipline_title[name=?]", "dc_discipline[title]"
+
+      assert_select "input#dc_discipline_employee_id[name=?]", "dc_discipline[employee_id]"
 
       assert_select "input#dc_discipline_discipline_by[name=?]", "dc_discipline[discipline_by]"
 

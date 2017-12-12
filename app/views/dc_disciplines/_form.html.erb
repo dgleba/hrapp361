@@ -2,102 +2,21 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-
-    <p>
-      <strong>Date discipline:</strong>
-      <%= @dc_discipline.date_discipline %>
-    </p>
-
-    <p>
-      <strong>Stf employee:</strong>
-      <%= @dc_discipline.stf_employee %>
-    </p>
-
-    <p>
-      <strong>Discipline by:</strong>
-      <%= @dc_discipline.discipline_by %>
-    </p>
-
-    <p>
-      <strong>Dc level:</strong>
-      <%= @dc_discipline.dc_level %>
-    </p>
-
-    <p>
-      <strong>Dc stream:</strong>
-      <%= @dc_discipline.dc_stream %>
-    </p>
-
-    <p>
-      <strong>Infraction description:</strong>
-      <%= @dc_discipline.infraction_description %>
-    </p>
-
-    <p>
-      <strong>Dc action:</strong>
-      <%= @dc_discipline.dc_action %>
-    </p>
-
-    <p>
-      <strong>Dc comment:</strong>
-      <%= @dc_discipline.dc_comment %>
-    </p>
-
-    
-
-    <style>
-    .sigPad {
-      margin: 0;
-      padding: 0;
-      width: 303px; /* Change the width */
-    }
-    
-    .sigWrapper {
-      clear: both;
-      height: 108px; /* Change the height */
-    
-      border: 1px solid #ccc;
-    }
-    </style>
-    
-    <div class="sigPad">
-      <p class="drawItDesc">Draw your signature</p>
-      <ul class="sigNav">
-        <li class="clearButton">
-          <a href="#clear">Clear</a>
-        </li>
-      </ul>
-      <div class="sig sigWrapper">
-        <div class="typed"></div>
-        <canvas class="pad" width="300" height="105"></canvas><%= f.input :output , as: :hidden , input_html: { class: 'output' } %>
-      </div>
-    </div>
-    
-    <div>
-      <br>
-    </div>
-    
+    <%= f.input :title %>
+    <%= f.input :date_discipline %>
+    <%= f.association :employee %>
+    <%= f.input :discipline_by %>
+    <%= f.association :dc_level %>
+    <%= f.association :dc_stream %>
+    <%= f.input :infraction_description %>
+    <%= f.input :dc_action %>
+    <%= f.input :dc_comment %>
+    <%= f.input :output %>
+    <%= f.input :sort_order %>
+    <%= f.input :active_status %>
   </div>
 
-  
-  
   <div class="form-actions">
-      <%= f.button :submit, class: 'btn btn-success'%>
+    <%= f.button :submit, class: 'btn btn-success'%>
   </div>
 <% end %>
-
-
-<script>
-var dgoptions = {
-  bgColour : '#F0FEEF'
-  , drawOnly : true
-};
-
-$( document ).ready(function(){
-  // if sigpad is not in a cocoon nested form.. 
-  // also, without this, it won't show sigpad when edit is pressed. 2016-06-24.  
-  $('.sigPad').signaturePad(dgoptions);
- });
-</script>
-
-   

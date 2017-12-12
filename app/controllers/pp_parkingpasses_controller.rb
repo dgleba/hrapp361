@@ -66,6 +66,6 @@ before_filter :authenticate_user!
 
   # Only allow a trusted parameter "white list" through.
   def pp_parkingpass_params
-    params.require(:pp_parkingpass).permit(:en_name, :parking_pass, :dept, :company, :grouping, :estatus, :supervisor, :en_clock)
+    params.require(:pp_parkingpass).permit(:title, :employee_id, :parking_pass, :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock)
   end
 end
