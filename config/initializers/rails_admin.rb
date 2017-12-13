@@ -84,7 +84,6 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
     ## With an audit adapter, you can add:
      history_index
      history_show
@@ -96,58 +95,67 @@ RailsAdmin.config do |config|
 
   
   config.model 'DcDiscipline' do
-   
     edit do
       #include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :output # but you still can remove fields
       exclude_fields :active_status, :sort_order, :title # but you still can remove fields
- 
+      #
       fields do
         help false
       end
-      
-    #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
-    field :employee do
-      associated_collection_cache_all false
-      associated_collection_scope do
-        Proc.new { |scope|
-            scope = scope.where(active: 1) # if location.present?
-         }
-      end
-    end     
-    
-  end
-
+      #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
+      field :employee do
+        associated_collection_cache_all false
+        associated_collection_scope do
+          Proc.new { |scope|
+              scope = scope.where(active: 1) # if location.present?
+           }
+        end
+      end     
+    end
+    #
     list do
       include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :active_status # but you still can remove fields
       exclude_fields :sort_order
     end
-    
+    # 
     object_label_method {  :to_s }
-    
   end
 
- 
-    config.model 'Employee' do
-      object_label_method {  :ra_empl_active }
-      list { sort_by :name  }
-      
-      
+  config.model 'DcLevel' do
+    list do 
+      sort_by :id 
+      field :id do
+        sort_reverse false
+      end
+    end  
+  end
   
-    
-    end
+  config.model 'Employee' do
+    object_label_method {  :ra_empl_active }
+    list { sort_by :name  }
+  end
 
- 
- 
   config.model 'PpParkingpass' do
     edit do
-        field :employee
-        field :parking_pass
+      field :employee
+      field :parking_pass
+      #
       fields do
         help false
       end
+      #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
+      field :employee do
+        associated_collection_cache_all false
+        associated_collection_scope do
+          Proc.new { |scope|
+              scope = scope.where(active: 1) # if location.present?
+           }
+        end
+      end     
     end
+    #
     list do
       field :id
       field :employee
