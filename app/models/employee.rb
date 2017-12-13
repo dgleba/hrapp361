@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
 
-  has_paper_trail class_name: 'PapertrailTable'
+  # has_paper_trail class_name: 'PapertrailTable'
   # use audited for model record history
   # audited
   # use papertrail for model record history

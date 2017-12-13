@@ -17,11 +17,11 @@ class Ability
       can :access, :rails_admin      
       can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
-      can :read, :all 
-       # can :read,  [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList , User, Role ]
+      # can :read, :all 
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role ]
       can [ :create, :update, ], [ DcDiscipline, PpParkingpass ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
-      can [ :destroy, ], [ PpParkingpass  ]
+      # can [ :destroy, ], [ PpParkingpass  ]
       can :export,  :all 
       can :history,  :all
 

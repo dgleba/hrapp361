@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_paper_trail class_name: 'PapertrailTable'
-
+  has_paper_trail  class_name: 'PapertrailTable'
 
   self.table_name = "users_dc"
 
