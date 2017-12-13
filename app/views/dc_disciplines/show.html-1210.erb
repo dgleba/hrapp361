@@ -1,8 +1,4 @@
 
-<p>
-  <strong>Title:</strong>
-  <%= @dc_discipline.title %>
-</p>
 
 <p>
   <strong>Date discipline:</strong>
@@ -10,7 +6,7 @@
 </p>
 
 <p>
-  <strong>Employee:</strong>
+  <strong>Stf employee:</strong>
   <%= @dc_discipline.employee %>
 </p>
 
@@ -45,8 +41,8 @@
 </p>
 
 <p>
-  <strong></strong>
-  <%#= @dc_discipline.output %>
+  <strong>Output:</strong>
+  <%= @dc_discipline.output %>
   
   <div class="sigPad signed">
     <div class="sigWrapper">
@@ -56,16 +52,25 @@
 
 </p>
 
-<br>
-<br>
-<br>
+<p>
+  <strong>Sort order:</strong>
+  <%= @dc_discipline.sort_order %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @dc_discipline.active_status %>
+</p>
+
 <br>
 <%= link_to 'Edit', edit_dc_discipline_path(@dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
 <%= link_to 'Back', dc_disciplines_path, class: "btn btn-default" %>
+
+
 
 <script>
 $(document).ready(function() {
       var sig = <%= raw @dc_discipline.output %>;
       $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
       });
-</script>  
+</script>      

@@ -94,6 +94,24 @@ RailsAdmin.config do |config|
   config.compact_show_view = false
 
   
+  config.model 'DcDiscipline' do
+    edit do
+      #include_all_fields # all other default fields will be added after, conveniently
+      exclude_fields :output # but you still can remove fields
+      exclude_fields :active_status, :sort_order, :title # but you still can remove fields
+ 
+      fields do
+        help false
+      end
+    end
+    list do
+      include_all_fields # all other default fields will be added after, conveniently
+      exclude_fields :active_status # but you still can remove fields
+      exclude_fields :sort_order
+    end
+  end
+
+  
   config.model 'PpParkingpass' do
     edit do
         field :employee

@@ -36,6 +36,7 @@
   <thead>
     <tr>
       <th colspan="1"></th>
+            <th>Title</th>
       <th>Date discipline</th>
       <th>Employee</th>
       <th>Discipline by</th>
@@ -44,7 +45,9 @@
       <th>Infraction description</th>
       <th>Dc action</th>
       <th>Dc comment</th>
-
+      <th>Output</th>
+      <th>Sort order</th>
+      <th>Active status</th>
     </tr>
   </thead>
 
@@ -59,6 +62,7 @@
           </div>
         </td>
         
+        <td><%= dc_discipline.title %></td>
         <td><%= dc_discipline.date_discipline %></td>
         <td><%= dc_discipline.employee %></td>
         <td><%= dc_discipline.discipline_by %></td>
@@ -67,6 +71,9 @@
         <td><%= dc_discipline.infraction_description %></td>
         <td><%= dc_discipline.dc_action %></td>
         <td><%= dc_discipline.dc_comment %></td>
+        <td><%= dc_discipline.output %></td>
+        <td><%= dc_discipline.sort_order %></td>
+        <td><%= dc_discipline.active_status %></td>
       </tr>
     <% end %>
   </tbody>

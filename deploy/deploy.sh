@@ -25,6 +25,8 @@ usage:
 
 
  cd /srv/web/rail263
+ 
+ chmod +x deploy/deploy.sh
  deploy/deploy.sh
 
 end -- usage. 
@@ -43,7 +45,7 @@ date ; set +vx  ; set -vx ; # echo off, then echo on
 
 prjname="hrapp361"
 dpath="/srv/web/$prjname"
-vport="12999"
+vport="1341"
 
 
 

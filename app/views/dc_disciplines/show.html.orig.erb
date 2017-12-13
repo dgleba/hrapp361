@@ -45,27 +45,20 @@
 </p>
 
 <p>
-  <strong></strong>
-  <%#= @dc_discipline.output %>
-  
-  <div class="sigPad signed">
-    <div class="sigWrapper">
-       <canvas class="pad" height="111" width="311"></canvas>
-    </div>
-  </div>
+  <strong>Output:</strong>
+  <%= @dc_discipline.output %>
+</p>
 
+<p>
+  <strong>Sort order:</strong>
+  <%= @dc_discipline.sort_order %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @dc_discipline.active_status %>
 </p>
 
 <br>
-<br>
-<br>
-<br>
 <%= link_to 'Edit', edit_dc_discipline_path(@dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
 <%= link_to 'Back', dc_disciplines_path, class: "btn btn-default" %>
-
-<script>
-$(document).ready(function() {
-      var sig = <%= raw @dc_discipline.output %>;
-      $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
-      });
-</script>  

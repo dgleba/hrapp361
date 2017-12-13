@@ -17,9 +17,9 @@ class Ability
       can :access, :rails_admin      
       can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
-      # can :read, :all 
+      can :read, :all 
        # can :read,  [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList , User, Role ]
-      # can [ :create, :update, ], [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList ]
+      can [ :create, :update, ], [ DcDiscipline, PpParkingpass ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
       # can [ :destroy, ], [ Product , ProductFeature,  CountryOfOrigin  ]
       can :export,  :all 
