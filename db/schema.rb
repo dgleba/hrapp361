@@ -298,20 +298,6 @@ ActiveRecord::Schema.define(version: 50161230223312) do
     t.index ["user_id"], name: "index_incidents_on_user_id", using: :btree
   end
 
-  create_table "pp_parkingpass", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "clock1",       limit: 8
-    t.string   "en_name",      limit: 22
-    t.string   "parking_pass", limit: 50
-    t.string   "dept",         limit: 7
-    t.string   "company",      limit: 28
-    t.string   "grouping",     limit: 16
-    t.string   "en_status",    limit: 3
-    t.string   "supervisor",   limit: 39
-    t.string   "en_clock",     limit: 39
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at"
-  end
-
   create_table "pp_parkingpass__history", primary_key: "history__id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "history__language", limit: 2
     t.text     "history__comments", limit: 65535
@@ -332,11 +318,51 @@ ActiveRecord::Schema.define(version: 50161230223312) do
     t.index ["id"], name: "prikeys", using: :btree
   end
 
+  create_table "pp_parkingpass_off", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "clock1",       limit: 8
+    t.string   "en_name",      limit: 22
+    t.string   "parking_pass", limit: 50
+    t.string   "dept",         limit: 7
+    t.string   "company",      limit: 28
+    t.string   "grouping",     limit: 16
+    t.string   "en_status",    limit: 3
+    t.string   "supervisor",   limit: 39
+    t.string   "en_clock",     limit: 39
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at"
+  end
+
+  create_table "pp_parkingpasses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",        limit: 99, null: false
+    t.integer  "employee_id"
+    t.string   "clock1",       limit: 8
+    t.string   "en_name",      limit: 22
+    t.string   "parking_pass", limit: 50
+    t.string   "dept",         limit: 7
+    t.string   "company",      limit: 28
+    t.string   "grouping",     limit: 16
+    t.string   "en_status",    limit: 3
+    t.string   "supervisor",   limit: 39
+    t.string   "en_clock",     limit: 39
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at"
+    t.index ["employee_id"], name: "employee_id", using: :btree
+  end
+
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "roles_dc", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "active_status"
+    t.integer  "sort"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "stf_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -470,6 +496,30 @@ ActiveRecord::Schema.define(version: 50161230223312) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.integer  "role_id"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "encrypted_password",                 default: "",   null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0,    null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "Role",                   limit: 9,   default: "NO", null: false
+    t.string   "username",               limit: 234, default: "x",  null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["role_id"], name: "index_users_on_role_id", using: :btree
+  end
+
+  create_table "users_dc", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "crypted_password"

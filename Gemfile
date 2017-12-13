@@ -80,3 +80,4 @@ gem 'enum_help'
   gem 'seed_dump'
 #
 gem 'signature-pad-rails'
+gem 'paper_trail'

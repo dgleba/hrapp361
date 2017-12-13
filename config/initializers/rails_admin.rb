@@ -3,7 +3,6 @@ Rails.application.eager_load!
 
 RailsAdmin.config do |config|
 
-
   #   I have not been able to get this to work...
   # config all models at once...
   # ActiveRecord::Base.descendants.each do |imodel|
@@ -48,27 +47,11 @@ RailsAdmin.config do |config|
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
-  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
+   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
-
-  # config.actions do
-    # dashboard                     # mandatory
-    # index                         # mandatory
-    # new
-    # export
-    # bulk_delete
-    # show
-    # edit
-    # delete
-    # show_in_app
-
-    # ## With an audit adapter, you can add:
-    # # history_index
-    # # history_show
-  # end
 
   config.actions do
     #dashboard                     # mandatory

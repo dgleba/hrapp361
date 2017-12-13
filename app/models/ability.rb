@@ -21,8 +21,9 @@ class Ability
        # can :read,  [ Answer, PartNumber, ProcessStep, Question, Survey, QuestionList , User, Role ]
       can [ :create, :update, ], [ DcDiscipline, PpParkingpass ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
-      # can [ :destroy, ], [ Product , ProductFeature,  CountryOfOrigin  ]
+      can [ :destroy, ], [ PpParkingpass  ]
       can :export,  :all 
+      can :history,  :all
 
     elsif user.lr_regular?
       can :access, :rails_admin       
