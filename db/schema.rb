@@ -224,7 +224,7 @@ ActiveRecord::Schema.define(version: 50161230223312) do
     t.string   "name"
     t.string   "clock"
     t.string   "sort"
-    t.boolean  "active",     default: true
+    t.integer  "active"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["clock", "name"], name: "index_employees_on_clock_and_name", unique: true, using: :btree

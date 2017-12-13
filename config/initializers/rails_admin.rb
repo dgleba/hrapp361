@@ -4,6 +4,7 @@ Rails.application.eager_load!
 RailsAdmin.config do |config|
 
 
+  #   I have not been able to get this to work...
   # config all models at once...
   # ActiveRecord::Base.descendants.each do |imodel|
     # config.model "#{imodel.name}" do
@@ -95,6 +96,7 @@ RailsAdmin.config do |config|
 
   
   config.model 'DcDiscipline' do
+   
     edit do
       #include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :output # but you still can remove fields
@@ -103,15 +105,41 @@ RailsAdmin.config do |config|
       fields do
         help false
       end
-    end
+      
+    #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
+    field :employee do
+      associated_collection_cache_all false
+      associated_collection_scope do
+        Proc.new { |scope|
+            scope = scope.where(active: 1) # if location.present?
+         }
+      end
+    end     
+    
+  end
+
     list do
       include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :active_status # but you still can remove fields
       exclude_fields :sort_order
     end
+    
+    object_label_method {  :to_s }
+    
   end
 
+ 
+    config.model 'Employee' do
+      object_label_method {  :ra_empl_active }
+      list { sort_by :name  }
+      
+      
   
+    
+    end
+
+ 
+ 
   config.model 'PpParkingpass' do
     edit do
         field :employee

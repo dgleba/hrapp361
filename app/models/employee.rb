@@ -6,6 +6,15 @@ class Employee < ApplicationRecord
     #"Name:#{self.name} Age:#{self.age} Weight: #{self.weight}"
     "#{name}, #{clock}"
   end
+
+  def ra_empl_active
+    # show columns contents, not record object like: 	#<Vehicle:0x007f343b3f2890>	2016-06-08	Details	Edit	Delete
+    # http://stackoverflow.com/questions/4829909/how-do-i-print-out-the-contents-of-an-object-in-rails-for-easy-debugging
+    #"Name:#{self.name} Age:#{self.age} Weight: #{self.weight}"
+    "#{name}, #{clock}, activ:#{active}"
+  end
+
+
   
   # use audited for model record history
   # audited
