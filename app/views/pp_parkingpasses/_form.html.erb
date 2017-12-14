@@ -4,6 +4,7 @@
   <div class="form-inputs">
     <%#= f.input :title %>
     <%= f.association :employee, :as => :collection_select, collection:Employee.order(:name, :clock).where(active: 1), :label_method => lambda { |employee| "#{employee.name} , #{employee.clock}, (#{employee.active})" } %>
+    <%= f.input :active_status %>
     <%= f.input :parking_pass %>
     <%#= f.input :dept %>
     <%#= f.input :company %>

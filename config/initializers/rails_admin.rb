@@ -40,7 +40,6 @@ RailsAdmin.config do |config|
    config.authorize_with :cancan
      # config.authorize_with :cancan, AdminAbility
 
-
   ## == Pundit ==
   # config.authorize_with :pundit
 
@@ -76,7 +75,6 @@ RailsAdmin.config do |config|
   # don't exclude empty fields in show...
   config.compact_show_view = false
 
-  
   config.model 'DcDiscipline' do
     edit do
       #include_all_fields # all other default fields will be added after, conveniently
@@ -86,13 +84,14 @@ RailsAdmin.config do |config|
       fields do
         help false
       end
+       #
       #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
       field :employee do
         associated_collection_cache_all false
         associated_collection_scope do
           Proc.new { |scope|
-              scope = scope.where(active: 1) # if location.present?
-           }
+            scope = scope.where(active: 1) # if location.present?
+            }
         end
       end     
     end
@@ -101,23 +100,14 @@ RailsAdmin.config do |config|
       include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :active_status # but you still can remove fields
       exclude_fields :sort_order
+      # https://stackoverflow.com/questions/13529634/rails-admin-searchable-association
+      field :employee do
+        queryable true
+        searchable [ :name, :clock ]
+      end      
     end
     # 
     object_label_method {  :to_s }
-  end
-
-  config.model 'DcLevel' do
-    list do 
-      sort_by :id 
-      field :id do
-        sort_reverse false
-      end
-    end  
-  end
-  
-  config.model 'Employee' do
-    object_label_method {  :ra_empl_active }
-    list { sort_by :name  }
   end
 
   config.model 'PpParkingpass' do
@@ -131,25 +121,41 @@ RailsAdmin.config do |config|
       end
       #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
       field :employee do
+        #searchable [ :name, :clock ]
         associated_collection_cache_all false
         associated_collection_scope do
           Proc.new { |scope|
-              scope = scope.where(active: 1) # if location.present?
+            scope = scope.where(active: 1) # if location.present?
            }
         end
       end     
     end
     #
     list do
-      exclude_fields :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1,  :title
-      # field :id
-      # field :employee
-      # field :parking_pass
-      # field :created_at
-      # field :updated_at
+      exclude_fields :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1, :title
+      # https://stackoverflow.com/questions/13529634/rails-admin-searchable-association
+      field :employee do
+        queryable true
+        searchable [ :name, :clock ]
+      end
     end
   end
- 
+  
+  config.model 'DcLevel' do
+    list do 
+      sort_by :id 
+      field :id do
+        sort_reverse false
+      end
+    end  
+  end
+  
+  config.model 'Employee' do
+    object_label_method {  :ra_empl_active }
+    list do 
+      sort_by :name
+    end  
+  end  
  
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   

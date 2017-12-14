@@ -1,5 +1,7 @@
 class Employee < ApplicationRecord
 
+  # has_many :pp_parkingpass
+  
   # has_paper_trail class_name: 'PapertrailTable'
   # use audited for model record history
   # audited

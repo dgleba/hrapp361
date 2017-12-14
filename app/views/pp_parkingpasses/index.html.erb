@@ -37,6 +37,7 @@
     <tr>
       <th colspan="1"></th>
       <th>Employee</th>
+      <th>Active (0 or 1)</th>
       <th>Parking pass</th>
     </tr>
   </thead>
@@ -53,6 +54,7 @@
         </td>
         
         <td><%= pp_parkingpass.employee %></td>
+        <td><%= pp_parkingpass.active_status %></td>
         <td><%= pp_parkingpass.parking_pass %></td>
       </tr>
     <% end %>
