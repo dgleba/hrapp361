@@ -2,16 +2,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.association :employee %>
+    <%#= f.input :title %>
+    <%= f.association :employee, :as => :collection_select, collection:Employee.order(:name, :clock).where(active: 1), :label_method => lambda { |employee| "#{employee.name} , #{employee.clock}, (#{employee.active})" } %>
     <%= f.input :parking_pass %>
-    <%= f.input :dept %>
-    <%= f.input :company %>
-    <%= f.input :grouping %>
-    <%= f.input :en_status %>
-    <%= f.input :supervisor %>
-    <%= f.input :en_name %>
-    <%= f.input :en_clock %>
+    <%#= f.input :dept %>
+    <%#= f.input :company %>
+    <%#= f.input :grouping %>
+    <%#= f.input :en_status %>
+    <%#= f.input :supervisor %>
+    <%#= f.input :en_name %>
+    <%#= f.input :en_clock %>
   </div>
 
   <div class="form-actions">
