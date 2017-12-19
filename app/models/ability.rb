@@ -29,10 +29,12 @@ class Ability
       can :access, :rails_admin       
       # can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, Role ]
+      can [ :update, ], [ DcDiscipline, ]
       # can :read, [  Role, User, ]
       # can :read, [  Answer, PartNumber, ProcessStep,  Question, Survey, QuestionList ]
       # can [ :create, :update, ], [  Answer ]
-      can :export,  :all 
+      cannot :export,  :all 
 
     elsif user.lr_future4?
       # can :read, [ Product, Role, User]

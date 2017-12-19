@@ -21,7 +21,6 @@ RailsAdmin.config do |config|
   # end
   # # https://github.com/sferik/rails_admin/wiki/Models
 
- 
   config.main_app_name = Proc.new {
     ["HRapp361", "(#{Time.zone.now.to_s(:time)})"]
   }
@@ -134,6 +133,7 @@ RailsAdmin.config do |config|
     list do
       exclude_fields :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1, :title
       # https://stackoverflow.com/questions/13529634/rails-admin-searchable-association
+      # this solves .. rails_admin filter association returns all rows
       field :employee do
         queryable true
         searchable [ :name, :clock ]
@@ -167,6 +167,5 @@ RailsAdmin.config do |config|
       # :ra_question_list_nameref
     # end
   # end
-
 
 end
