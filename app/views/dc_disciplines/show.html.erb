@@ -45,7 +45,11 @@
 </p>
 
 <p>
-  <strong></strong>
+  <div>
+  <hr>
+  <hr>
+  <h4><strong>Employee Signature:</strong></h4>
+
   <%#= @dc_discipline.output %>
   
   <div class="sigPad signed">
@@ -53,19 +57,44 @@
        <canvas class="pad" height="111" width="311"></canvas>
     </div>
   </div>
+  </div>
+</p>
+<br>
+<br>
+<br>
 
+<p>
+
+  <hr>
+  <h4><strong>Supervisor Signature:</strong></h4>
+
+  <%#= @dc_discipline.output %>
+  
+  <div class="sigPad_supr signed">
+    <div class="sigWrapper">
+       <canvas class="pad" height="111" width="311"></canvas>
+    </div>
+  </div>
 </p>
 
+
+
 <br>
 <br>
 <br>
-<br>
+<hr>
+
 <%= link_to 'Sign-it', edit_dc_discipline_path(@dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
 <%= link_to 'Back', dc_disciplines_path, class: "btn btn-default" %>
 
 <script>
 $(document).ready(function() {
+
       var sig = <%= raw @dc_discipline.output %>;
       $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
+
+      var sig_supr = <%= raw @dc_discipline.sigpad_supervisor %>;
+      $('.sigPad_supr').signaturePad({displayOnly : true}).regenerate(sig_supr);
+
       });
 </script>  

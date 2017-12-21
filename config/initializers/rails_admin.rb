@@ -77,13 +77,20 @@ RailsAdmin.config do |config|
   config.model 'DcDiscipline' do
     edit do
       #include_all_fields # all other default fields will be added after, conveniently
-      exclude_fields :output # but you still can remove fields
+      exclude_fields :output, :sigpad_supervisor, :versions # but you still can remove fields
       exclude_fields :active_status, :sort_order, :title # but you still can remove fields
       #
       fields do
         help false
       end
-       #
+      
+      field :hr_manager_approval do
+        help 'By typing in their own name, the HR Manager approves this discipline'
+      end
+      field :production_manager_approval do
+        help 'By typing in their own name, the Production Manager approves this discipline'
+      end
+       
       #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
       field :employee do
         associated_collection_cache_all false
