@@ -2,12 +2,14 @@
 <row class="row is-table-row" >
 
   <div class="col-sm-1 ">
-    <%= link_to 'Create', new_dc_discipline_path , class: "btn btn-success"%>
+    <h4>Disciplines</h4>
   </div>
 
   <div class="col-sm-2 ">
-    <h4>Listing Dc Disciplines</h4>
+    <p>Use Administer section to create/edit</p>
+    <%#= [commented out by dgleba] link_to 'Create', new_dc_discipline_path , class: "btn btn-success"%>
   </div>
+
 
   <div class="col-sm-3">
     <%= search_form_for @q, class: 'search-form' do |f| %>
@@ -54,8 +56,8 @@
         <td>
           <div class="btn-group">
           <%= link_to 'Show', dc_discipline, class: "btn btn-info", :style=>'color:#FFFFFF;' %>
-          <%= link_to 'Edit', edit_dc_discipline_path(dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %>
-          <%= link_to 'Destroy', dc_discipline, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning", :style=>'color:#FFFFFF;' %>
+          <%= link_to 'Sign-it', edit_dc_discipline_path(dc_discipline), class: "btn btn-primary", :style=>'color:#FFFFFF;' %>
+          <%#= [commented out by dgleba] link_to 'Destroy', dc_discipline, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning", :style=>'color:#FFFFFF;' %>
           </div>
         </td>
         

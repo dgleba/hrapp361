@@ -18,7 +18,7 @@ class Ability
       can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
       # can :read, :all 
-      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role ]
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone ]
       can [ :create, :update, ], [ DcDiscipline, PpParkingpass ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
       # can [ :destroy, ], [ PpParkingpass  ]
