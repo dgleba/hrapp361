@@ -85,12 +85,15 @@ RailsAdmin.config do |config|
       end
       
       field :hr_manager_approval do
-        help 'By typing in their own name, the HR Manager approves this discipline'
+        help 'By typing in their own name, the HR Manager approves this discipline. The person should type their own name in this box for themself only.'
       end
       field :production_manager_approval do
-        help 'By typing in their own name, the Production Manager approves this discipline'
+        help 'By typing in their own name, the Production Manager approves this discipline.  The person should type their own name in this box for themself only.'
       end
-       
+      field :documents_on_file do
+        help "Additional documents are on file in the employee's electronic personnel file folder."
+      end
+      
       #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
       field :employee do
         associated_collection_cache_all false
@@ -99,7 +102,16 @@ RailsAdmin.config do |config|
             scope = scope.where(active: 1) # if location.present?
             }
         end
-      end     
+      end  
+
+      field :dc_level do
+        associated_collection_cache_all false
+        associated_collection_scope do
+          Proc.new { |scope|
+            scope = scope.where(active_status: 1) # if location.present?
+            }
+        end
+      end      
     end
     #
     list do
@@ -150,10 +162,10 @@ RailsAdmin.config do |config|
   
   config.model 'DcLevel' do
     list do 
-      sort_by :id 
-      field :id do
-        sort_reverse false
-      end
+       sort_by :sort_order 
+      # field :id do
+        # sort_reverse false  # this seemed to prevent any from showing in the list view.
+      # end
     end  
   end
   
