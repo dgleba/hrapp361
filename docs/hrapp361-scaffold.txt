@@ -47,6 +47,25 @@ rails generate scaffold PpParkingpass title  \
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Title:  .
+-----------------------2018-04-09[Apr-Mon]16-33PM
+
+notes:
+
+remove 
+  dc_action
+add
+  employee_comment
+
+change
+    production_manager_approval to dept_manager_approval
+    dc_comment to hr_comment
+    
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 
 old..
