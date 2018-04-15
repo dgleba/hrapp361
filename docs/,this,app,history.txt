@@ -1,0 +1,19 @@
+
+hrapp361 app history.
+
+_____________
+
+
+This from lpa346 - 8f115ad\ 2017-05-03\ New, Before any changes. Created using github.com/dgleba/bashrail.\ [albe]
+
+copied hrapp361 from lpa346 app.
+  b2c0f2b\ 2017-12-09\ remove history before last 30 commits. This project was LPA346 - now it is HRapp361.\ [David Gleba]
+  
+  
+hrapp361
+ 
+e892658\ 2017-12-21 (HEAD, origin/master, master)\ added documenst_on_file 2017-12-21\ [albe]
+
+
+
+_____________
