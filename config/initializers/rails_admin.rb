@@ -73,6 +73,8 @@ RailsAdmin.config do |config|
   # got error.. include_all_fields
   # don't exclude empty fields in show...
   config.compact_show_view = false
+  
+  # config.excluded_models = ["CorrectiveAction", "Incident"]
 
   config.model 'DcDiscipline' do
     edit do
