@@ -26,12 +26,11 @@ rails generate scaffold DcStream name:string active_status:integer sort_order:in
 
 # Then create parent tables.
 
-rails generate scaffold DcDiscipline  title \
-date_discipline:date employee:references  discipline_by dc_level:references dc_stream:references infraction_description:text \
-dc_action:text dc_comment:text output:text \
-sort_order:integer active_status:integer   \
- -f
-
+rails generate scaffold DcDiscipline title:string \
+date_discipline:date employee:references discipline_by:string dc_level:references dc_stream:references infraction_description:text \
+documents_on_file:boolean hr_comment:text employee_comment:text output:text \
+sort_order:integer active_status:integer sigpad_supervisor:text hr_manager_approval:string dept_manager_approval:string \
+--no-migration
 
 # parking..
 
@@ -83,6 +82,11 @@ old..
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+rails generate scaffold DcDiscipline  title \
+date_discipline:date employee:references  discipline_by dc_level:references dc_stream:references infraction_description:text \
+dc_action:text dc_comment:text output:text \
+sort_order:integer active_status:integer   \
+ -f
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -151,7 +151,7 @@ CREATE TABLE `audits` (
   KEY `user_index` (`user_id`,`user_type`),
   KEY `index_audits_on_request_uuid` (`request_uuid`),
   KEY `index_audits_on_created_at` (`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=1324 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1321 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +227,7 @@ CREATE TABLE `dataface__failed_logins` (
   `username` varchar(32) NOT NULL,
   `time_of_attempt` int(11) NOT NULL,
   PRIMARY KEY (`attempt_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,9 +441,9 @@ CREATE TABLE `dc_disciplines` (
   `dc_level_id` int(11) DEFAULT NULL,
   `dc_stream_id` int(11) DEFAULT NULL,
   `infraction_description` text,
+  `dc_action` text,
   `documents_on_file` tinyint(1) DEFAULT NULL,
-  `hr_comment` text,
-  `employee_comment` text,
+  `dc_comment` text,
   `output` text,
   `sort_order` int(11) DEFAULT NULL,
   `active_status` int(11) DEFAULT NULL,
@@ -451,7 +451,7 @@ CREATE TABLE `dc_disciplines` (
   `updated_at` datetime NOT NULL,
   `sigpad_supervisor` text,
   `hr_manager_approval` varchar(99) DEFAULT NULL,
-  `dept_manager_approval` varchar(99) DEFAULT NULL,
+  `production_manager_approval` varchar(99) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_dc_disciplines_on_employee_id` (`employee_id`),
   KEY `index_dc_disciplines_on_dc_level_id` (`dc_level_id`),
@@ -637,7 +637,7 @@ CREATE TABLE `employees` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_employees_on_clock_and_name` (`clock`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3833 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3828 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -677,7 +677,7 @@ CREATE TABLE `inci_assets` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_assets_on_asset_and_description` (`asset`,`description`) USING BTREE,
   UNIQUE KEY `index_inci_assets_on_asset_and_description` (`asset`,`description`)
-) ENGINE=InnoDB AUTO_INCREMENT=874 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=863 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 ALTER DATABASE `hrdb` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -959,7 +959,7 @@ CREATE TABLE `stf_assets` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_stf_assets_on_assetnum_and_description` (`assetnum`,`description`)
-) ENGINE=InnoDB AUTO_INCREMENT=855 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=844 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -998,7 +998,7 @@ CREATE TABLE `stf_employees` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_stf_employees_on_clocknum_and_name` (`clocknum`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5566 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5561 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1407,7 +1407,7 @@ CREATE TABLE `versions` (
   PRIMARY KEY (`id`),
   KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`),
   KEY `index_versions_on_transaction_id` (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1129 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1126 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1430,7 +1430,7 @@ CREATE TABLE `versions_dc` (
   PRIMARY KEY (`id`),
   KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`),
   KEY `index_versions_on_transaction_id` (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1603,4 +1603,4 @@ USE `hrdb`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-14 15:30:41
+-- Dump completed on 2018-04-08 15:30:31

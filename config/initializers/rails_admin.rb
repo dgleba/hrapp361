@@ -66,8 +66,8 @@ RailsAdmin.config do |config|
     delete
     show_in_app
     ## With an audit adapter, you can add:
-     history_index
-     history_show
+     # history_index
+     # history_show
   end
 
   # got error.. include_all_fields
@@ -87,8 +87,8 @@ RailsAdmin.config do |config|
       field :hr_manager_approval do
         help 'By typing in their own name, the HR Manager approves this discipline. The person should type their own name in this box for themself only.'
       end
-      field :production_manager_approval do
-        help 'By typing in their own name, the Production Manager approves this discipline.  The person should type their own name in this box for themself only.'
+      field :dept_manager_approval do
+        help 'By typing in their own name, the Dept Manager approves this discipline.  The person should type their own name in this box for themself only.'
       end
       field :documents_on_file do
         help "Additional documents are on file in the employee's electronic personnel file folder."
