@@ -7,6 +7,6 @@ class DcDiscipline < ApplicationRecord
   
   has_paper_trail class_name: 'PapertrailTable'
   
-  validates_presence_of :date_discipline
+  validates_presence_of :date_discipline, :discipline_by
   
 end
