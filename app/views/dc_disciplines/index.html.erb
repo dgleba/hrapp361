@@ -39,14 +39,11 @@
   <thead>
     <tr>
       <th colspan="1"></th>
+      <th>ID</th>
       <th>Date discipline</th>
       <th>Employee</th>
       <th>Discipline by</th>
-      <th>Dc level</th>
-      <th>Dc stream</th>
-      <th>Infraction description</th>
-      <th>Dc action</th>
-      <th>Employee comment</th>
+      
 
     </tr>
   </thead>
@@ -62,14 +59,11 @@
           </div>
         </td>
         
+        <td><%= dc_discipline.id %></td>
         <td><%= dc_discipline.date_discipline %></td>
         <td><%= dc_discipline.employee %></td>
         <td><%= dc_discipline.discipline_by %></td>
-        <td><%= dc_discipline.dc_level %></td>
-        <td><%= dc_discipline.dc_stream %></td>
-        <td><%= dc_discipline.infraction_description %></td>
-        <td><%#= dc_discipline.dc_action %></td>
-        <td><%= dc_discipline.employee_comment %></td>
+
       </tr>
     <% end %>
   </tbody>

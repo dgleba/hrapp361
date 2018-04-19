@@ -6,5 +6,7 @@ class DcDiscipline < ApplicationRecord
   default_scope { order(id: :desc) }
   
   has_paper_trail class_name: 'PapertrailTable'
-
+  
+  validates_presence_of :date_discipline
+  
 end
