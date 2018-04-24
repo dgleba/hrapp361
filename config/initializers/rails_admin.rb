@@ -80,7 +80,7 @@ RailsAdmin.config do |config|
     edit do
       #include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :output, :sigpad_supervisor, :versions # but you still can remove fields
-      exclude_fields :active_status, :sort_order, :title # but you still can remove fields
+      exclude_fields :active_status, :sort_order, :title , :stream_type # but you still can remove fields
       #
       fields do
         help false
