@@ -151,7 +151,27 @@ CREATE TABLE `audits` (
   KEY `user_index` (`user_id`,`user_type`),
   KEY `index_audits_on_request_uuid` (`request_uuid`),
   KEY `index_audits_on_created_at` (`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=1321 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1334 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `copy_employees`
+--
+
+DROP TABLE IF EXISTS `copy_employees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `copy_employees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `clock` varchar(255) DEFAULT NULL,
+  `sort` varchar(255) DEFAULT NULL,
+  `active` int(2) DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_employees_on_clock_and_name` (`clock`,`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3818 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +218,7 @@ CREATE TABLE `corrective_actions` (
   PRIMARY KEY (`id`),
   KEY `index_corrective_actions_on_incident_id` (`incident_id`),
   CONSTRAINT `fk_rails_9aac145ab5` FOREIGN KEY (`incident_id`) REFERENCES `incidents` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +247,7 @@ CREATE TABLE `dataface__failed_logins` (
   `username` varchar(32) NOT NULL,
   `time_of_attempt` int(11) NOT NULL,
   PRIMARY KEY (`attempt_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,9 +461,9 @@ CREATE TABLE `dc_disciplines` (
   `dc_level_id` int(11) DEFAULT NULL,
   `dc_stream_id` int(11) DEFAULT NULL,
   `infraction_description` text,
-  `dc_action` text,
   `documents_on_file` tinyint(1) DEFAULT NULL,
-  `dc_comment` text,
+  `hr_comment` text,
+  `employee_comment` text,
   `output` text,
   `sort_order` int(11) DEFAULT NULL,
   `active_status` int(11) DEFAULT NULL,
@@ -451,7 +471,8 @@ CREATE TABLE `dc_disciplines` (
   `updated_at` datetime NOT NULL,
   `sigpad_supervisor` text,
   `hr_manager_approval` varchar(99) DEFAULT NULL,
-  `production_manager_approval` varchar(99) DEFAULT NULL,
+  `dept_manager_approval` varchar(99) DEFAULT NULL,
+  `stream_type` varchar(99) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_dc_disciplines_on_employee_id` (`employee_id`),
   KEY `index_dc_disciplines_on_dc_level_id` (`dc_level_id`),
@@ -459,7 +480,7 @@ CREATE TABLE `dc_disciplines` (
   CONSTRAINT `fk_rails_328e4ed411` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
   CONSTRAINT `fk_rails_55090c154b` FOREIGN KEY (`dc_level_id`) REFERENCES `dc_levels` (`id`),
   CONSTRAINT `fk_rails_ec249656c8` FOREIGN KEY (`dc_stream_id`) REFERENCES `dc_streams` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -478,7 +499,7 @@ CREATE TABLE `dc_levels` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -497,7 +518,7 @@ CREATE TABLE `dc_streams` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -637,7 +658,7 @@ CREATE TABLE `employees` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_employees_on_clock_and_name` (`clock`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3828 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3932 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -677,7 +698,7 @@ CREATE TABLE `inci_assets` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_assets_on_asset_and_description` (`asset`,`description`) USING BTREE,
   UNIQUE KEY `index_inci_assets_on_asset_and_description` (`asset`,`description`)
-) ENGINE=InnoDB AUTO_INCREMENT=863 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=893 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 ALTER DATABASE `hrdb` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -771,7 +792,7 @@ CREATE TABLE `incidents` (
   CONSTRAINT `fk_rails_61fd4346ab` FOREIGN KEY (`corrective_action_id`) REFERENCES `corrective_actions` (`id`),
   CONSTRAINT `fk_rails_6af30a70d3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_rails_78dd9c65ac` FOREIGN KEY (`inci_asset_id`) REFERENCES `inci_assets` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -951,15 +972,15 @@ DROP TABLE IF EXISTS `stf_assets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `stf_assets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `assetnum` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `assetnum` varchar(255) DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `active_status` int(11) DEFAULT '1',
   `sort` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_stf_assets_on_assetnum_and_description` (`assetnum`,`description`)
-) ENGINE=InnoDB AUTO_INCREMENT=844 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=855 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -998,7 +1019,7 @@ CREATE TABLE `stf_employees` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_stf_employees_on_clocknum_and_name` (`clocknum`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5561 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5648 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1407,7 +1428,7 @@ CREATE TABLE `versions` (
   PRIMARY KEY (`id`),
   KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`),
   KEY `index_versions_on_transaction_id` (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1126 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1139 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1430,8 +1451,37 @@ CREATE TABLE `versions_dc` (
   PRIMARY KEY (`id`),
   KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`),
   KEY `index_versions_on_transaction_id` (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Temporary table structure for view `vw_disciplines`
+--
+
+DROP TABLE IF EXISTS `vw_disciplines`;
+/*!50001 DROP VIEW IF EXISTS `vw_disciplines`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vw_disciplines` (
+  `id` tinyint NOT NULL,
+  `date_discipline` tinyint NOT NULL,
+  `discipline_by` tinyint NOT NULL,
+  `infraction_description` tinyint NOT NULL,
+  `documents_on_file` tinyint NOT NULL,
+  `hr_comment` tinyint NOT NULL,
+  `employee_comment` tinyint NOT NULL,
+  `created_at` tinyint NOT NULL,
+  `updated_at` tinyint NOT NULL,
+  `hr_manager_approval` tinyint NOT NULL,
+  `dept_manager_approval` tinyint NOT NULL,
+  `stream` tinyint NOT NULL,
+  `level` tinyint NOT NULL,
+  `employee_name` tinyint NOT NULL,
+  `stream_type` tinyint NOT NULL,
+  `sigpad_supervisor` tinyint NOT NULL,
+  `sigpad_empl` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping routines for database 'hrdb'
@@ -1593,6 +1643,24 @@ USE `hrdb`;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_disciplines`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vw_disciplines`*/;
+/*!50001 DROP VIEW IF EXISTS `vw_disciplines`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50001 VIEW `vw_disciplines` AS select `d`.`id` AS `id`,`d`.`date_discipline` AS `date_discipline`,`d`.`discipline_by` AS `discipline_by`,`d`.`infraction_description` AS `infraction_description`,`d`.`documents_on_file` AS `documents_on_file`,`d`.`hr_comment` AS `hr_comment`,`d`.`employee_comment` AS `employee_comment`,`d`.`created_at` AS `created_at`,`d`.`updated_at` AS `updated_at`,`d`.`hr_manager_approval` AS `hr_manager_approval`,`d`.`dept_manager_approval` AS `dept_manager_approval`,`s`.`name` AS `stream`,`l`.`name` AS `level`,`e`.`name` AS `employee_name`,`d`.`stream_type` AS `stream_type`,substr(`d`.`sigpad_supervisor`,1,25) AS `sigpad_supervisor`,substr(`d`.`output`,1,25) AS `sigpad_empl` from (((`dc_disciplines` `d` left join `dc_streams` `s` on((`d`.`dc_stream_id` = `s`.`id`))) left join `dc_levels` `l` on((`d`.`dc_level_id` = `l`.`id`))) left join `employees` `e` on((`d`.`employee_id` = `e`.`id`))) order by `d`.`id` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1603,4 +1671,4 @@ USE `hrdb`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-08 15:30:31
+-- Dump completed on 2018-04-23 15:34:10

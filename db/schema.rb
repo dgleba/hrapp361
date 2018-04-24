@@ -211,6 +211,7 @@ ActiveRecord::Schema.define(version: 50161230223312) do
     t.text     "sigpad_supervisor",      limit: 65535
     t.string   "hr_manager_approval",    limit: 99
     t.string   "dept_manager_approval",  limit: 99
+    t.string   "stream_type",            limit: 99
     t.index ["dc_level_id"], name: "index_dc_disciplines_on_dc_level_id", using: :btree
     t.index ["dc_stream_id"], name: "index_dc_disciplines_on_dc_stream_id", using: :btree
     t.index ["employee_id"], name: "index_dc_disciplines_on_employee_id", using: :btree
