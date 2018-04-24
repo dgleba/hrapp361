@@ -201,16 +201,17 @@ ActiveRecord::Schema.define(version: 50161230223312) do
     t.integer  "dc_stream_id"
     t.text     "infraction_description", limit: 65535
     t.boolean  "documents_on_file"
+    t.text     "suspension_records",     limit: 65535
     t.text     "hr_comment",             limit: 65535
     t.text     "employee_comment",       limit: 65535
     t.text     "output",                 limit: 65535
     t.integer  "sort_order"
     t.integer  "active_status"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.text     "sigpad_supervisor",      limit: 65535
-    t.string   "hr_manager_approval",    limit: 99
-    t.string   "dept_manager_approval",  limit: 99
+    t.string   "hr_manager_approval",    limit: 99,    default: "--"
+    t.string   "dept_manager_approval",  limit: 99,    default: "--"
     t.string   "stream_type",            limit: 99
     t.index ["dc_level_id"], name: "index_dc_disciplines_on_dc_level_id", using: :btree
     t.index ["dc_stream_id"], name: "index_dc_disciplines_on_dc_stream_id", using: :btree
