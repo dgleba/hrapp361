@@ -63,6 +63,7 @@
         <td><%= dc_discipline.date_discipline %></td>
         <td><%= dc_discipline.employee %></td>
         <td><%= dc_discipline.discipline_by %></td>
+        <td><%= if dc_discipline.output then '.' else 'unsigned' end %></td>
 
       </tr>
     <% end %>
