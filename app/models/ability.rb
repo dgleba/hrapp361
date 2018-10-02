@@ -13,6 +13,19 @@ class Ability
     # http://hibbard.eu/authentication-with-devise-and-cancancan-in-rails-4-2/  
     #
 
+    elsif user.lr_delete?
+      can :access, :rails_admin      
+      can :dashboard                  # allow access to dashboard
+      can :show_in_app, :all
+      # can :read, :all 
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian ]
+      can [ :create, :update, ], [ DcDiscipline, PpParkingpass ]
+      # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
+      can [ :destroy, ], [ DcDiscipline, PpParkingpass  ]
+      can :export,  :all 
+      can :history,  :all
+
+    
     elsif user.lr_supervisor?
       can :access, :rails_admin      
       can :dashboard                  # allow access to dashboard

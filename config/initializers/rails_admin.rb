@@ -1,3 +1,10 @@
+# reload initializer in development... https://github.com/sferik/rails_admin/issues/2726#issuecomment-387521401
+RailsAdmin::Engine.config.to_prepare do
+  if Rails.env.development?
+    RailsAdmin::Config.reset
+    load "#{Rails.root}/config/initializers/rails_admin.rb"
+  end
+end
 
 Rails.application.eager_load!
 
@@ -77,6 +84,13 @@ RailsAdmin.config do |config|
   # config.excluded_models = ["CorrectiveAction", "Incident"]
 
   config.model 'DcDiscipline' do
+
+    # http://stackoverflow.com/questions/11658281/rails-admin-display-name-instead-of-id  # 2017-05-16 kwruby 
+    #   see the model for this item as well.
+    object_label_method do
+      :radm_name
+    end
+
     edit do
       #include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :output, :sigpad_supervisor, :versions # but you still can remove fields
@@ -130,9 +144,14 @@ RailsAdmin.config do |config|
     object_label_method {  :to_s }
   end
 
+  
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
   config.model 'PpParkingpass' do
     edit do
-      exclude_fields :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1, :title
+      exclude_fields :versions, :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1, :title
       # field :employee
       # field :parking_pass
       #

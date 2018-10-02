@@ -71,6 +71,10 @@ class User < ActiveRecord::Base
     self.role.name == "lr_supervisor"
   end
 
+  def lr_delete?
+    self.role.name == "lr_delete"
+  end
+  
   def lr_seller?
     self.role.name == "lr_seller"
   end
