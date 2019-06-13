@@ -42,6 +42,34 @@ rails generate scaffold PpParkingpass title  \
   -f
 
 
+# performance-reviews
+
+rails generate scaffold PerformanceReviews title:string \
+  date_of_review:date employee:references  review_by:string \
+job_title:string wage date_of_hire:date supervisor \
+ reason_for_review hr_info:text \
+  supervisor_comment:text hr_comment:text \
+reliability \
+safety \
+intiative \
+five_s \
+ci \
+attitude \
+production_targets \
+takes_direction \
+  employee_comment:text \
+sigpad_employee:text \
+  sigpad_supervisor:text  manager_approval:string hr_approval:string \
+sort_order:integer \
+  active_status:integer  \
+--no-migration
+
+
+
+
+
+
+
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

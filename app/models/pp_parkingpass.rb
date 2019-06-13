@@ -7,7 +7,7 @@ class PpParkingpass < ApplicationRecord
 
   validates :parking_pass, :employee_id, presence: true, uniqueness: true
   
-  validates :parking_pass, length: {minimum: 4, maximum: 5}
+  validates :parking_pass, length: {minimum: 4, maximum: 25}
   
   def name
     # prevent nilclass error..
