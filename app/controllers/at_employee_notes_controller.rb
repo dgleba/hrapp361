@@ -33,6 +33,7 @@ before_filter :authenticate_user!
       if @at_employee_note.save
         format.html { redirect_to @at_employee_note, notice: t('success_create') }
         format.json { render :show, status: :created, location: @at_employee_note }
+        @at_employee_note.user = current_user
       else
         format.html { render :new }
         format.json { render json: @at_employee_note.errors, status: :unprocessable_entity }
@@ -66,6 +67,6 @@ before_filter :authenticate_user!
 
   # Only allow a trusted parameter "white list" through.
   def at_employee_note_params
-    params.require(:at_employee_note).permit(:name_if_not, :employee_id, :issue, :date_if_not_today)
+    params.require(:at_employee_note).permit(:name_if_not, :employee_id, :issue, :date_if_not_today, :user_id)
   end
 end

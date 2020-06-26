@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   has_paper_trail  class_name: 'PapertrailTable'
 
+  has_many :at_employee_notes, dependent: :destroy
+
   self.table_name = "users_dc"
 
   # Include default devise modules. Others available are:
@@ -27,7 +29,6 @@ class User < ActiveRecord::Base
   #validates :email, presence: true, uniqueness: true, email: true
   validates :email, presence: true, uniqueness: true
 
-  # has_many :surveys, dependent: :destroy
 
 
   def to_s

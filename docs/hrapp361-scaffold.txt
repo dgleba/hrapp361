@@ -73,6 +73,13 @@ sort_order:integer \
 rails generate scaffold AtEmployeeNote name_if_not   \
   employee:references issue date_if_not_today -f
 
+rails g migration AddUsertoAtEmployeeNote user:references
+
+#scratch..
+rails generate scaffold AtEmployeeNote2 name_if_not   \
+  employee:references  issue date_if_not_today user:references \
+   -f
+
 
 2020-06-26
 
