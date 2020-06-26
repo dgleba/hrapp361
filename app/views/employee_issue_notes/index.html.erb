@@ -6,22 +6,12 @@
   </div>
 
   <div class="col-sm-2 ">
-    <h4>Listing Employee Issue Notes</h4>
+    <h4>Employee Issue Notes</h4>
   </div>
 
-  <div class="col-sm-3">
-    <%= search_form_for @q, class: 'search-form' do |f| %>
-      <div class="input-group">
-        <%= f.search_field :issue_cont, class: 'form-control' %>
-        <span class="input-group-btn">
-          <button class="btn btn-primary">Search <i class="fa fa-search"></i>
-          </button>
-        </span>
-      </div>
-    <% end %>
-  </div>
 
-  <div class="col-sm-4 ">
+
+  <div class="col-sm-5 ">
     <%= paginate @employee_issue_notes %>
   </div>
   
@@ -29,6 +19,10 @@
     <%= page_entries_info @employee_issue_notes, :entry_name => 'item' %>
   </div>
   
+  <div class="col-sm-1 ">
+    Sorted Updated descending
+  </div>
+
 </row>
 
 
@@ -38,10 +32,12 @@
       <th colspan="1"></th>
             <th>Issue</th>
       <th>Employee</th>
-      <th>Name if not</th>
+      <th>EmployeeName (If employee not in EmployeeList)</th>
       <th>Date of issue</th>
       <th>Comment</th>
-      <th>User</th>
+      <th>EnteredBy</th>
+      <th>Created</th>
+      <th>Updated</th>
     </tr>
   </thead>
 
@@ -52,7 +48,6 @@
           <div class="btn-group">
           <%= link_to 'Show', employee_issue_note, class: "btn btn-info", :style=>'color:#FFFFFF;' %>
           <%= link_to 'Edit', edit_employee_issue_note_path(employee_issue_note), class: "btn btn-primary", :style=>'color:#FFFFFF;' %>
-          <%= link_to 'Destroy', employee_issue_note, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning", :style=>'color:#FFFFFF;' %>
           </div>
         </td>
         
@@ -62,6 +57,8 @@
         <td><%= employee_issue_note.date_of_issue %></td>
         <td><%= employee_issue_note.comment %></td>
         <td><%= employee_issue_note.user %></td>
+        <td><%= employee_issue_note.created_at %></td>
+        <td><%= employee_issue_note.updated_at %></td>
       </tr>
     <% end %>
   </tbody>

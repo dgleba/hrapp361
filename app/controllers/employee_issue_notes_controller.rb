@@ -30,6 +30,8 @@ before_filter :authenticate_user!
   # POST /employee_issue_notes
   def create
     respond_to do |format|
+      # assign this record to the currently logged in user.
+      @employee_issue_note.user = current_user
       if @employee_issue_note.save
         format.html { redirect_to @employee_issue_note, notice: t('success_create') }
         format.json { render :show, status: :created, location: @employee_issue_note }

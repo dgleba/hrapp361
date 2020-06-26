@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :issue %>
+    <%= f.input :issue, label: 'Employee Issue Notes'  %>
     <%= f.association :employee %>
-    <%= f.input :name_if_not %>
-    <%= f.input :date_of_issue %>
-    <%= f.input :comment %>
-    <%= f.association :user %>
+    <%= f.input :name_if_not, label: 'Employee name ( only needed if it is not found in the list above )' %>
+    <%= f.input :date_of_issue, hint: 'Date when the issue happened'%>
+    <%= f.input :comment, hint: 'Someone may make a comment here about this entry at a later time'%>
+    
   </div>
 
   <div class="form-actions">

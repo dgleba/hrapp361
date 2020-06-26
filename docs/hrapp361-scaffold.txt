@@ -65,9 +65,10 @@ sort_order:integer \
 --no-migration
 
 
+=================================================
 
 #
-#  --  Employee Attendance issues notes
+#  --  Employee Attendance issues notes  - 2020-06-26
 #
 
 rails generate scaffold EmployeeIssueNote issue:text   \
@@ -78,18 +79,11 @@ rails destroy scaffold EmployeeIssueNote
 rails destroy scaffold AtEmployeeNote2
 rails destroy scaffold AtEmployeeNote
 
+In controller...
     @employee_issue_note.user = current_user
 
-#scratch..
 
-rails generate scaffold AtEmployeeNote2 name_if_not   \
-  employee:references  issue date_if_not_today user:references \
-   -f
-rails g migration AddUsertoAtEmployeeNote user:references
-
-
-2020-06-26
-
+=================================================
 
 
 #
