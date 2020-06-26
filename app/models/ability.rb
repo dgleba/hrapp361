@@ -19,8 +19,10 @@ class Ability
       can :show_in_app, :all
       # can :read, :all 
       can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian ]
-      can [ :create, :update, ], [ DcDiscipline, PpParkingpass ]
+      # can edit these..
+      can [ :create, :update, ], [ DcDiscipline, PpParkingpass, User ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
+      # can  delete these...
       can [ :destroy, ], [ DcDiscipline, PpParkingpass  ]
       can :export,  :all 
       can :history,  :all

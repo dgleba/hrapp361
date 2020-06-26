@@ -132,7 +132,7 @@ RailsAdmin.config do |config|
     #
     list do
       include_all_fields # all other default fields will be added after, conveniently
-      exclude_fields :active_status # but you still can remove fields
+      exclude_fields :active_status, :versions # but you still can remove fields
       exclude_fields :sort_order
       # https://stackoverflow.com/questions/13529634/rails-admin-searchable-association
       field :employee do
@@ -171,7 +171,7 @@ RailsAdmin.config do |config|
     end
     #
     list do
-      exclude_fields :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1, :title
+      exclude_fields :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1, :title , :versions
       # https://stackoverflow.com/questions/13529634/rails-admin-searchable-association
       # this solves .. rails_admin filter association returns all rows
       field :employee do
@@ -197,6 +197,18 @@ RailsAdmin.config do |config|
     end  
   end  
  
+config.model 'User' do
+    edit do
+      exclude_fields :versions
+      fields do
+        help false
+      end
+    end
+    list do
+      exclude_fields  :versions
+    end
+  end
+
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
   #  http://stackoverflow.com/questions/11658281/rails-admin-display-name-instead-of-id

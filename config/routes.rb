@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :at_employee_notes
   resources :pp_parkingpasses
   resources :dc_disciplines
   resources :employees

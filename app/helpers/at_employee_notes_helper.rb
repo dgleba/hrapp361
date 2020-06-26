@@ -1,0 +1,2 @@
+module AtEmployeeNotesHelper
+end

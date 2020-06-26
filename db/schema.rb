@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 50161230223312) do
+ActiveRecord::Schema.define(version: 50161230223313) do
 
   create_table "about_incidents_reader", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "info", limit: 65535, null: false
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 50161230223312) do
     t.integer  "info"
     t.index ["history__modified"], name: "datekeys", using: :btree
     t.index ["id"], name: "prikeys", using: :btree
+  end
+
+  create_table "at_employee_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name_if_not"
+    t.integer  "employee_id"
+    t.string   "issue"
+    t.string   "date_if_not_today"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["employee_id"], name: "index_at_employee_notes_on_employee_id", using: :btree
   end
 
   create_table "audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -634,6 +644,7 @@ ActiveRecord::Schema.define(version: 50161230223312) do
     t.index ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
   end
 
+  add_foreign_key "at_employee_notes", "employees"
   add_foreign_key "corrective_actions", "incidents"
   add_foreign_key "dc_disciplines", "dc_levels"
   add_foreign_key "dc_disciplines", "dc_streams"
