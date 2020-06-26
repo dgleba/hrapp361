@@ -66,6 +66,6 @@ before_filter :authenticate_user!
 
   # Only allow a trusted parameter "white list" through.
   def employee_issue_note_params
-    params.require(:employee_issue_note).permit(:issue, :employee_id, :name_if_not, :date_if_not_today, :comment, :user_id)
+    params.require(:employee_issue_note).permit(:issue, :employee_id, :name_if_not, :date_of_issue, :comment, :user_id)
   end
 end

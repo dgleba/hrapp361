@@ -3,7 +3,7 @@ FactoryGirl.define do
     issue "MyText"
     employee nil
     name_if_not "MyString"
-    date_if_not_today "2020-06-26"
+    date_of_issue "2020-06-26"
     comment "MyText"
     user nil
   end

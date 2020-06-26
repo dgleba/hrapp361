@@ -4,7 +4,7 @@ class CreateEmployeeIssueNotes < ActiveRecord::Migration[5.0]
       t.text :issue
       t.references :employee, foreign_key: true
       t.string :name_if_not
-      t.date :date_if_not_today
+      t.date :date_of_issue
       t.text :comment
       t.references :user, foreign_key: true
 

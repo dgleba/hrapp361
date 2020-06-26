@@ -71,7 +71,7 @@ sort_order:integer \
 #
 
 rails generate scaffold EmployeeIssueNote issue:text   \
-  employee:references name_if_not date_if_not_today:date comment:text user:references -f
+  employee:references name_if_not date_of_issue:date comment:text user:references -f
 
 
 rails destroy scaffold EmployeeIssueNote

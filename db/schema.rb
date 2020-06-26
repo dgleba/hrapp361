@@ -237,14 +237,14 @@ ActiveRecord::Schema.define(version: 50161230223313) do
   end
 
   create_table "employee_issue_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "issue",             limit: 65535
+    t.text     "issue",         limit: 65535
     t.integer  "employee_id"
     t.string   "name_if_not"
-    t.date     "date_if_not_today"
-    t.text     "comment",           limit: 65535
+    t.date     "date_of_issue"
+    t.text     "comment",       limit: 65535
     t.integer  "user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["employee_id"], name: "index_employee_issue_notes_on_employee_id", using: :btree
     t.index ["user_id"], name: "index_employee_issue_notes_on_user_id", using: :btree
   end
