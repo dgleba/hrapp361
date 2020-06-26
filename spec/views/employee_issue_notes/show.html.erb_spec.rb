@@ -6,7 +6,7 @@ RSpec.describe "employee_issue_notes/show", type: :view do
       :issue => "MyText",
       :employee => nil,
       :name_if_not => "Name If Not",
-      :comment => "",
+      :comment => "MyText",
       :user => nil
     ))
   end
@@ -16,7 +16,7 @@ RSpec.describe "employee_issue_notes/show", type: :view do
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(//)
     expect(rendered).to match(/Name If Not/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/MyText/)
     expect(rendered).to match(//)
   end
 end

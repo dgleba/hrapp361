@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 50161230223316) do
+ActiveRecord::Schema.define(version: 50161230223313) do
 
   create_table "about_incidents_reader", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "info", limit: 65535, null: false
@@ -240,7 +240,8 @@ ActiveRecord::Schema.define(version: 50161230223316) do
     t.text     "issue",             limit: 65535
     t.integer  "employee_id"
     t.string   "name_if_not"
-    t.string   "date_if_not_today"
+    t.date     "date_if_not_today"
+    t.text     "comment",           limit: 65535
     t.integer  "user_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false

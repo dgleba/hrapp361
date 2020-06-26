@@ -5,7 +5,7 @@ class CreateEmployeeIssueNotes < ActiveRecord::Migration[5.0]
       t.references :employee, foreign_key: true
       t.string :name_if_not
       t.date :date_if_not_today
-      t.test :comment
+      t.text :comment
       t.references :user, foreign_key: true
 
       t.timestamps

@@ -4,7 +4,7 @@ FactoryGirl.define do
     employee nil
     name_if_not "MyString"
     date_if_not_today "2020-06-26"
-    comment ""
+    comment "MyText"
     user nil
   end
 end

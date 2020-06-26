@@ -7,14 +7,14 @@ RSpec.describe "employee_issue_notes/index", type: :view do
         :issue => "MyText",
         :employee => nil,
         :name_if_not => "Name If Not",
-        :comment => "",
+        :comment => "MyText",
         :user => nil
       ),
       EmployeeIssueNote.create!(
         :issue => "MyText",
         :employee => nil,
         :name_if_not => "Name If Not",
-        :comment => "",
+        :comment => "MyText",
         :user => nil
       )
     ])
@@ -25,7 +25,7 @@ RSpec.describe "employee_issue_notes/index", type: :view do
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => "Name If Not".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
+    assert_select "tr>td", :text => "MyText".to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end
