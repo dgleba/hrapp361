@@ -1,0 +1,2 @@
+module EmployeeIssueNotesHelper
+end

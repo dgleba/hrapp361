@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 50161230223315) do
+ActiveRecord::Schema.define(version: 50161230223316) do
 
   create_table "about_incidents_reader", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "info", limit: 65535, null: false
@@ -26,29 +26,6 @@ ActiveRecord::Schema.define(version: 50161230223315) do
     t.integer  "info"
     t.index ["history__modified"], name: "datekeys", using: :btree
     t.index ["id"], name: "prikeys", using: :btree
-  end
-
-  create_table "at_employee_note2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name_if_not"
-    t.integer  "employee_id"
-    t.string   "issue"
-    t.string   "date_if_not_today"
-    t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["employee_id"], name: "index_at_employee_note2s_on_employee_id", using: :btree
-    t.index ["user_id"], name: "index_at_employee_note2s_on_user_id", using: :btree
-  end
-
-  create_table "at_employee_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name_if_not"
-    t.integer  "employee_id"
-    t.text     "issue",             limit: 65535
-    t.string   "date_if_not_today"
-    t.integer  "user_id_1"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.index ["employee_id"], name: "index_at_employee_notes_on_employee_id", using: :btree
   end
 
   create_table "audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -257,6 +234,18 @@ ActiveRecord::Schema.define(version: 50161230223315) do
     t.string   "comment"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "employee_issue_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "issue",             limit: 65535
+    t.integer  "employee_id"
+    t.string   "name_if_not"
+    t.string   "date_if_not_today"
+    t.integer  "user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["employee_id"], name: "index_employee_issue_notes_on_employee_id", using: :btree
+    t.index ["user_id"], name: "index_employee_issue_notes_on_user_id", using: :btree
   end
 
   create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -657,13 +646,12 @@ ActiveRecord::Schema.define(version: 50161230223315) do
     t.index ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
   end
 
-  add_foreign_key "at_employee_note2s", "employees"
-  add_foreign_key "at_employee_note2s", "users"
-  add_foreign_key "at_employee_notes", "employees"
   add_foreign_key "corrective_actions", "incidents"
   add_foreign_key "dc_disciplines", "dc_levels"
   add_foreign_key "dc_disciplines", "dc_streams"
   add_foreign_key "dc_disciplines", "employees"
+  add_foreign_key "employee_issue_notes", "employees"
+  add_foreign_key "employee_issue_notes", "users"
   add_foreign_key "incidents", "corrective_actions"
   add_foreign_key "incidents", "employees"
   add_foreign_key "incidents", "inci_assets"

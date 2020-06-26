@@ -70,15 +70,20 @@ sort_order:integer \
 #  --  Employee Attendance issues notes
 #
 
-rails generate scaffold AtEmployeeNote name_if_not   \
-  employee:references issue date_if_not_today -f
+rails generate scaffold EmployeeIssueNote issue:text   \
+  employee:references name_if_not date_if_not_today user:references -f
 
-rails g migration AddUsertoAtEmployeeNote user:references
+
+rails destroy scaffold AtEmployeeNote2
+rails destroy scaffold AtEmployeeNote
+
 
 #scratch..
+
 rails generate scaffold AtEmployeeNote2 name_if_not   \
   employee:references  issue date_if_not_today user:references \
    -f
+rails g migration AddUsertoAtEmployeeNote user:references
 
 
 2020-06-26

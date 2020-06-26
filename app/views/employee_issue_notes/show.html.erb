@@ -1,0 +1,29 @@
+
+<p>
+  <strong>Issue:</strong>
+  <%= @employee_issue_note.issue %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @employee_issue_note.employee %>
+</p>
+
+<p>
+  <strong>Name if not:</strong>
+  <%= @employee_issue_note.name_if_not %>
+</p>
+
+<p>
+  <strong>Date if not today:</strong>
+  <%= @employee_issue_note.date_if_not_today %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @employee_issue_note.user %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_employee_issue_note_path(@employee_issue_note), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', employee_issue_notes_path, class: "btn btn-default" %>
