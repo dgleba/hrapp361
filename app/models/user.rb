@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_paper_trail  class_name: 'PapertrailTable'
 
-  has_many :at_employee_notes, dependent: :destroy
+  # has_many :employee_issue_notes, dependent: :destroy
 
   self.table_name = "users_dc"
 
