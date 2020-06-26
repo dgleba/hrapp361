@@ -29,12 +29,10 @@ before_filter :authenticate_user!
 
   # POST /employee_issue_notes
   def create
-    @employee_issue_note.user = current_user
     respond_to do |format|
       if @employee_issue_note.save
         format.html { redirect_to @employee_issue_note, notice: t('success_create') }
         format.json { render :show, status: :created, location: @employee_issue_note }
-
       else
         format.html { render :new }
         format.json { render json: @employee_issue_note.errors, status: :unprocessable_entity }
@@ -68,6 +66,6 @@ before_filter :authenticate_user!
 
   # Only allow a trusted parameter "white list" through.
   def employee_issue_note_params
-    params.require(:employee_issue_note).permit(:issue, :employee_id, :name_if_not, :date_if_not_today, :user_id)
+    params.require(:employee_issue_note).permit(:issue, :employee_id, :name_if_not, :date_if_not_today, :comment, :user_id)
   end
 end

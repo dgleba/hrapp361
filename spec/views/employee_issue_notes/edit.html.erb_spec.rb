@@ -6,7 +6,7 @@ RSpec.describe "employee_issue_notes/edit", type: :view do
       :issue => "MyText",
       :employee => nil,
       :name_if_not => "MyString",
-      :date_if_not_today => "MyString",
+      :comment => "",
       :user => nil
     ))
   end
@@ -22,7 +22,7 @@ RSpec.describe "employee_issue_notes/edit", type: :view do
 
       assert_select "input#employee_issue_note_name_if_not[name=?]", "employee_issue_note[name_if_not]"
 
-      assert_select "input#employee_issue_note_date_if_not_today[name=?]", "employee_issue_note[date_if_not_today]"
+      assert_select "input#employee_issue_note_comment[name=?]", "employee_issue_note[comment]"
 
       assert_select "input#employee_issue_note_user_id[name=?]", "employee_issue_note[user_id]"
     end

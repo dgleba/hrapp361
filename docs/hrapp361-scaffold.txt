@@ -71,12 +71,14 @@ sort_order:integer \
 #
 
 rails generate scaffold EmployeeIssueNote issue:text   \
-  employee:references name_if_not date_if_not_today user:references -f
+  employee:references name_if_not date_if_not_today:date comment:test user:references -f
 
 
+rails destroy scaffold EmployeeIssueNote
 rails destroy scaffold AtEmployeeNote2
 rails destroy scaffold AtEmployeeNote
 
+    @employee_issue_note.user = current_user
 
 #scratch..
 
