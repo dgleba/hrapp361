@@ -1,5 +1,7 @@
 class EmployeeIssueNote < ApplicationRecord
-
+  
+  has_paper_trail class_name: 'PapertrailTable'
+  
   default_scope { order(updated_at: :desc) }
   
   validates_presence_of :issue
