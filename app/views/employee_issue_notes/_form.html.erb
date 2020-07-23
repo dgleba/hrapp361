@@ -3,10 +3,12 @@
 
   <div class="form-inputs">
     <%= f.input :issue, label: 'Employee Issue Notes'  %>
-    <%= f.association :employee %>
-    <%= f.input :name_if_not, label: 'Employee name ( only needed if it is not found in the list above )' %>
+    <%= f.association :employee,  :as => :collection_select, collection:Employee.order(:name, :clock).where(active: 1), 
+        :label_method => lambda { |employee| "#{employee.name} , #{employee.clock}" }, 
+        label: 'Employee name ( Please use this first. )'%>
+    <%= f.input :name_if_not, label: 'Employee name ( LAST RESORT - only needed if it is not found in the list above )' %>
     <%= f.input :date_of_issue, hint: 'Date when the issue happened'%>
-    <%= f.input :comment, hint: 'Someone may make a comment here about this entry at a later time'%>
+    <%= f.input :comment, label: 'For HR only', hint: 'Someone may make a comment here about this entry at a later time'%>
     
   </div>
 
