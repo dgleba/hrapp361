@@ -8,11 +8,21 @@
         label: 'Employee name ( Please use this first. )'%>
     <%= f.input :name_if_not, label: 'Employee name ( LAST RESORT - only needed if it is not found in the list above )' %>
     <%= f.input :date_of_issue, hint: 'Date when the issue happened'%>
-    <%= f.input :comment, label: 'For HR only', hint: 'Someone may make a comment here about this entry at a later time'%>
+    <%= f.input :comment, label: 'For HR USE only', hint: 'Someone may make a comment here about this entry at a later time'%>
     
+
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-success'%>
   </div>
+
+  <p></p>
+  <span> Created: <%= @employee_issue_note.created_at.strftime("%Y-%m-%d %H:%M")  if @employee_issue_note.created_at.present? %></span>
+  &nbsp;&nbsp;&nbsp;
+  <span> Updated: <%= @employee_issue_note.updated_at.strftime("%Y-%m-%d %H:%M") if @employee_issue_note.updated_at.present? %></span>
+  &nbsp;&nbsp;&nbsp;
+  <span> ID: <%= @employee_issue_note.id if @employee_issue_note.id.present? %></span>  </div>
+
+
 <% end %>

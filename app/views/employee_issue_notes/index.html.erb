@@ -35,7 +35,7 @@
       <th>Employee</th>
       <th>Employee (2nd)</th>
       <th>Date of issue</th>
-      <th>For-HR-Only</th>
+      <th>For-HR-Use-Only</th>
       <th>EnteredBy</th>
       <th>Created</th>
       <th>Updated</th>
@@ -47,7 +47,7 @@
       <tr>
         <td>
           <div class="btn-group">
-          <%= link_to 'Show', employee_issue_note, class: "btn btn-info", :style=>'color:#FFFFFF;' %>
+          <%# commented out... = link_to 'Show', employee_issue_note, class: "btn btn-info", :style=>'color:#FFFFFF;' %>
           <%= link_to 'Edit', edit_employee_issue_note_path(employee_issue_note), class: "btn btn-primary", :style=>'color:#FFFFFF;' %>
           </div>
         </td>
@@ -56,11 +56,11 @@
         <td><%= employee_issue_note.issue %></td>
         <td><%= employee_issue_note.employee %></td>
         <td><%= employee_issue_note.name_if_not %></td>
-        <td><%= employee_issue_note.date_of_issue %></td>
+        <td><%= employee_issue_note.date_of_issue.strftime("%m/%d") if employee_issue_note.date_of_issue.present? %></td>
         <td><%= employee_issue_note.comment %></td>
         <td><%= employee_issue_note.user %></td>
-        <td><%= employee_issue_note.created_at %></td>
-        <td><%= employee_issue_note.updated_at %></td>
+        <td><%= employee_issue_note.created_at.strftime("%m-%d %k:%M") if employee_issue_note.created_at.present? %></td>
+        <td><%= employee_issue_note.updated_at.strftime("%m-%d %k:%M") if employee_issue_note.updated_at.present? %></td>
       </tr>
     <% end %>
   </tbody>
