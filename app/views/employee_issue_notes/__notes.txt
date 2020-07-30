@@ -1,0 +1,8 @@
+
+  <p></p>
+  <span> Created: <%= @employee_issue_note.created_at.strftime("%Y-%m-%d %H:%M")  if @employee_issue_note.created_at.present? %></span>
+  &nbsp;&nbsp;&nbsp;
+  <span> Updated: <%= @employee_issue_note.updated_at.strftime("%Y-%m-%d %H:%M") if @employee_issue_note.updated_at.present? %></span>
+  &nbsp;&nbsp;&nbsp;
+  <span> ID: <%= @employee_issue_note.id if @employee_issue_note.id.present? %></span>  </div>
+

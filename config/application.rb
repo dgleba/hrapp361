@@ -22,6 +22,8 @@ puts ENV.inspect
 module HRapp361
   class Application < Rails::Application
   
+    # config.assets.version = '2'
+
     #config # https://github.com/laserlemon/figaro/issues/186
     
     # http://railsapps.github.io/rails-environment-variables.html

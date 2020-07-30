@@ -81,3 +81,4 @@ gem 'enum_help'
 #
 gem 'signature-pad-rails'
 gem 'paper_trail'
+gem 'autosize'

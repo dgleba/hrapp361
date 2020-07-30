@@ -60,6 +60,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (7.0.1)
       execjs
+    autosize (2.4.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap-kaminari-views (0.0.5)
@@ -306,6 +307,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autosize
   bootstrap-kaminari-views
   bootstrap-sass
   byebug
