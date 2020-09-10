@@ -209,6 +209,42 @@ config.model 'User' do
     end
   end
 
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  config.model 'EmployeeIssueNote' do
+    edit do
+      exclude_fields :versions
+      #
+      fields do
+        help false
+      end
+      #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
+      field :employee do
+        #searchable [ :name, :clock ]
+        associated_collection_cache_all false
+        associated_collection_scope do
+          Proc.new { |scope|
+            scope = scope.where(active: 1) # if location.present?
+           }
+        end
+      end     
+    end
+    #
+    list do
+      # this means there will be no pagination. not good.
+      # scopes [:unscoped]
+      exclude_fields :dept, :company, :grouping, :en_status, :supervisor, :en_name, :en_clock, :clock1, :title , :versions
+      # https://stackoverflow.com/questions/13529634/rails-admin-searchable-association
+      # this solves .. rails_admin filter association returns all rows
+      field :employee do
+        queryable true
+        searchable [ :name, :clock ]
+      end
+    end
+  end
+  
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
   #  http://stackoverflow.com/questions/11658281/rails-admin-display-name-instead-of-id

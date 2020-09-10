@@ -2,11 +2,16 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :issue, label: 'Employee Issue Notes'  %>
-    <%= f.association :employee,  :as => :collection_select, collection:Employee.order(:name, :clock).where(active: 1), 
-        :label_method => lambda { |employee| "#{employee.name} , #{employee.clock}" }, 
-        label: 'Employee name ( Please use this first. )'%>
-    <%= f.input :name_if_not, label: 'Employee name ( LAST RESORT - only needed if it is not found in the list above )' %>
+  
+  <%= f.association :employee,  :as => :collection_select, collection:Employee.order(:name, :clock).where(active: 1), 
+  :label_method => lambda { |employee| "#{employee.name} , #{employee.clock}" }, 
+  label: 'Employee name (Click for a searchable employee list)'%>
+  
+  <%= f.input :issue, label: 'Employee Issue Note (If the employee name is not in the list above, just include the name in the notes here.)'  %>
+
+    <% # commented out on form 2020-08-09_Sun_18.00-PM. Some users are putting comments in this field rather than names. Some users are not using the employee field. They should just use the note field. %>
+    <% #    = f.input :name_if_not, label: 'Employee name ( LAST RESORT - only needed if it is not found in the list above )' %>
+
     <%= f.input :date_of_issue, hint: 'Date when the issue happened'%>
     <% # commented out on form. 2020-07-30_Thu_08.29-AM...  = f.input :comment, label: 'For HR USE only', hint: 'Someone may make a comment here about this entry at a later time'%>
     
@@ -16,7 +21,6 @@
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-success'%>
   </div>
-
 
 
 <% end %>

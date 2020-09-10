@@ -13,6 +13,11 @@ before_filter :authenticate_user!
   def index
     @q = @employee_issue_notes.search params[:q]
     @employee_issue_notes = @q.result.page(params[:page])
+
+    # scope..
+    @employee_issue_notes = @employee_issue_notes.lfew
+    
+
   end
 
   # GET /employee_issue_notes/1

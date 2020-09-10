@@ -22,7 +22,7 @@ puts ENV.inspect
 module HRapp361
   class Application < Rails::Application
   
-    # config.assets.version = '2'
+    config.assets.version = '3'
 
     #config # https://github.com/laserlemon/figaro/issues/186
     

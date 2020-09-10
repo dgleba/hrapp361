@@ -6,3 +6,17 @@
   &nbsp;&nbsp;&nbsp;
   <span> ID: <%= @employee_issue_note.id if @employee_issue_note.id.present? %></span>  </div>
 
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@  
+#@  
+#@  
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   2020-08-24[Aug-Mon]08-42AM 
+
+ remove.. commenting too hastle ...
+
+        <td><%= employee_issue_note.employee %></td>
+        <td><%# commented out.. = employee_issue_note.name_if_not %></td>
+        <td><%= employee_issue_note.date_of_issue.strftime("%m/%d") if employee_issue_note.date_of_issue.present? %></td>
+        <td><%# commented out.. = employee_issue_note.comment %></td>
