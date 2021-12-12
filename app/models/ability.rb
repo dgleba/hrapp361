@@ -58,7 +58,13 @@ class Ability
       
     elsif user.lr_readonly?
       can :read, Role
-
+      can :access, :rails_admin       
+      can :dashboard 
+      can :show_in_app, :all
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, Role , EmployeeIssueNote , User]
+      cannot :export,  :all 
+	  
+	  
     elsif user.lr_minimal?
       can :read, Role
 
