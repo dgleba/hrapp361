@@ -1,0 +1,80 @@
+
+<p>
+  <strong>Assigned to reviewer:</strong>
+  <%= @pr_performance_review.assigned_to_reviewer %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @pr_performance_review.employee %>
+</p>
+
+<p>
+  <strong>Review date:</strong>
+  <%= @pr_performance_review.review_date %>
+</p>
+
+<p>
+  <strong>Strengths:</strong>
+  <%= @pr_performance_review.strengths %>
+</p>
+
+<p>
+  <strong>Opportunities:</strong>
+  <%= @pr_performance_review.opportunities %>
+</p>
+
+<p>
+  <strong>Development growth:</strong>
+  <%= @pr_performance_review.development_growth %>
+</p>
+
+
+<p>
+  <strong>Employee comment:</strong>
+  <%= @pr_performance_review.employee_comment %>
+</p>
+
+
+<p>
+  <div>
+
+  <h4><strong>Employee Signature:</strong></h4>
+
+  <div class="sigPad signed">
+    <div class="sigWrapper">
+       <canvas class="pad" height="111" width="311"></canvas>
+    </div>
+  </div>
+  </div>
+</p>
+<br>
+<br>
+<br>
+
+
+
+<p>
+  <strong>Supervisor approval:</strong>
+  <%= @pr_performance_review.supervisor_approval %>
+</p>
+
+<p>
+  <strong>Hr manager approval:</strong>
+  <%= @pr_performance_review.hr_manager_approval %>
+</p>
+
+<br>
+<%= link_to 'Edit', edit_pr_performance_review_path(@pr_performance_review), class: "btn btn-primary", :style=>'color:#FFFFFF;' %> &nbsp &nbsp
+<%= link_to 'Back', pr_performance_reviews_path, class: "btn btn-default" %>
+
+<script>
+$(document).ready(function() {
+
+      var sig = <%= raw @pr_performance_review.sigpad_employee  %>;
+      $('.sigPad').signaturePad({displayOnly : true}).regenerate(sig);
+
+
+
+      });
+</script>  

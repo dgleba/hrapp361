@@ -1,0 +1,2 @@
+json.extract! pr_performance_review, :id, :assigned_to_reviewer, :employee_id, :review_date, :strengths, :opportunities, :development_growth, :hr_comment, :employee_comment, :sigpad_employee, :sigpad_supervisor, :sigpad_hr, :supervisor_approval, :hr_manager_approval, :dept_manager_approval, :scheduling_date, :sort_order, :active_status, :created_at, :updated_at
+json.url pr_performance_review_url(pr_performance_review, format: :json)

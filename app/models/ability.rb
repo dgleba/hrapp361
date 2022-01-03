@@ -18,12 +18,12 @@ class Ability
       can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
       # can :read, :all 
-      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian, EmployeeIssueNote ]
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian, EmployeeIssueNote, PrPerformanceReview ]
       # can edit these..
-      can [ :create, :update, ], [ DcDiscipline, PpParkingpass, User, EmployeeIssueNote ]
+      can [ :create, :update, ], [ DcDiscipline, PpParkingpass, User, EmployeeIssueNote, PrPerformanceReview ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
       # can  delete these...
-      can [ :destroy, ], [ DcDiscipline, PpParkingpass  ]
+      can [ :destroy, ], [ DcDiscipline, PpParkingpass, PrPerformanceReview  ]
       can :export,  :all 
       can :history,  :all
 

@@ -1,0 +1,139 @@
+<%= simple_form_for(@pr_performance_review) do |f| %>
+  <%= f.error_notification %>
+
+Note: editing this form after employee signature will erase the signature upon saving.  You can see the saved signature by pressing the show button.  
+<br>
+<br>
+  
+
+<table style="border-collapse: collapse; width: 100%; background-color: #88B27C; " border="1">
+<tbody>
+<tr>
+<td style="width: 25%;">
+<h2><span style="background-color: #88B27C;">&nbsp;Part One&nbsp;</span></h2>
+</td>
+<td style="width: 25%;">
+<h2><span style="background-color: #88B27C;"> &nbsp;Review</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div>
+<br>
+</div>
+
+
+  <div class="form-inputs">
+  <%= f.association :employee , readonly: true, disabled: true %>
+  
+  <%= f.input :strengths %>
+  <%= f.input :opportunities %>
+  <%= f.input :development_growth %>
+  <%= f.input :employee_comment %>
+  
+
+
+<div>
+<br>
+</div>
+
+<table style="border-collapse: collapse; width: 100%; background-color: #804B97; " border="1">
+<tbody>
+<tr>
+<td style="width: 25%;">
+<h2><span style="background-color: #804B97;">&nbsp;Part Two&nbsp;</span></h2>
+</td>
+<td style="width: 25%;">
+<h2><span style="background-color: #804B97;"> &nbsp;Approval and Closing</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+  <style>
+  .sigPad {
+    margin: 0;
+    padding: 0;
+    width: 303px; /* Change the width */
+  }
+  
+  .sigWrapper {
+    clear: both;
+    height: 108px; /* Change the height */
+  
+    border: 1px solid #ccc;
+  }
+  </style>
+    <hr>
+    Save everything in this section at one time. Do not save twice in here.
+
+    <hr>
+    <h3>Employee Signature:</strong></h2>
+    
+    <div> Note: press `Draw it` to start drawing your signature... </div>
+
+    <div class="sigPad">
+      <p class="drawItDesc">Draw your signature</p>
+      <ul class="sigNav">
+      <li class="drawIt"><a href="#draw-it">Draw It</a></li>
+        <li class="clearButton">
+          <a href="#clear">Clear</a>
+        </li>
+      </ul>
+      <div class="sig sigWrapper">
+        <div class="typed"></div>
+        <canvas class="pad" width="300" height="105"></canvas><%= f.input :sigpad_employee , as: :hidden , input_html: { class: 'output' } %>
+      </div>
+    </div>
+
+    <div>
+    <br>
+      Supervisor: When the employee signs it, 1. Type your name below to approve the review and 2. set the date at the same time before pressing save.
+<br>
+<br>
+      Note: Saving this form after employee signature was saved will ERASE the signature. [ After saving, you can see the saved signature by pressing the show button. ]
+
+      <br>
+      </div>
+      <br>
+  <%= f.input :supervisor_approval %>
+  <%= f.input :review_date, as: :date, html5: true %>
+  
+  
+  <%#= f.input :hr_comment %>
+  <%#= f.input :sigpad_supervisor %>
+  <%#= f.input :hr_manager_approval %>    
+  <%#= f.input :dept_manager_approval %>
+  <%#= f.input :scheduling_date, as: :date, html5: true %>
+  <%#= f.input :sigpad_hr %>
+  
+  <%#= f.input :sort_order %>
+  <%#= f.input :active_status %>
+  
+
+  
+  <div class="form-actions">
+  <%= f.button :submit, class: 'btn btn-success'%>
+  </div>
+  <br>  
+  <% end %>
+  
+  <script>
+  var dgoptions = {
+    bgColour : '#F0FEEF' 
+      };
+  
+  
+  $( document ).ready(function(){
+    // if sigpad is not in a cocoon nested form.. 
+    // also, without this, it won't show sigpad when edit is pressed. 2016-06-24.  
+    $('.sigPad').signaturePad(dgoptions );
+    });
+    </script>  
+
+ 
+  <%#  # , drawOnly : true %>

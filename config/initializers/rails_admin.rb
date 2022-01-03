@@ -83,6 +83,50 @@ RailsAdmin.config do |config|
   
   # config.excluded_models = ["CorrectiveAction", "Incident"]
 
+    
+  config.model 'PrPerformanceReview' do
+    list do 
+      # sort_by :id :desc 
+      # field :id do
+        # sort_reverse false  # this seemed to prevent any from showing in the list view.
+      # end
+    end 
+    
+
+    edit do
+      #include_all_fields # all other default fields will be added after, conveniently
+      exclude_fields  :sigpad_employee, :sigpad_supervisor,  :sigpad_hr, :dept_manager_approval, :scheduling_date, :review_date_1, :versions # but you still can remove fields
+      exclude_fields :active_status, :sort_order, :title  # but you still can remove fields
+      #
+      fields do
+        help false
+      end
+
+      field :reviewtype do
+        help 'Enter 1yr, or `initial` in the case of a new employees where you want it to show up in a year from now to be scheduled'
+      end
+      field :review_date do
+        help 'The supervisor should enter review date when they actually do the review.'
+      end
+      
+      field :hr_manager_approval do
+        help 'By typing in their own name, the HR Manager approves this discipline. The person should type their own name in this box for themself only.'
+      end
+        
+      #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
+      field :employee do
+          help 'During scheduling, do not enter any other fields below this.'
+          associated_collection_cache_all false
+          associated_collection_scope do
+            Proc.new { |scope|
+            scope = scope.where(active: 1) # if location.present?
+          }
+        end
+      end  
+    end 
+  end
+  
+
   config.model 'DcDiscipline' do
 
     # http://stackoverflow.com/questions/11658281/rails-admin-display-name-instead-of-id  # 2017-05-16 kwruby 
@@ -92,6 +136,7 @@ RailsAdmin.config do |config|
     end
 
     edit do
+      #include_fields :reviewtype
       #include_all_fields # all other default fields will be added after, conveniently
       exclude_fields :output, :sigpad_supervisor, :versions # but you still can remove fields
       exclude_fields :active_status, :sort_order, :title , :stream_type # but you still can remove fields

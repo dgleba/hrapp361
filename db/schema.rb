@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 50161230223313) do
+ActiveRecord::Schema.define(version: 50161230223314) do
 
   create_table "about_incidents_reader", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "info", limit: 65535, null: false
@@ -48,6 +48,36 @@ ActiveRecord::Schema.define(version: 50161230223313) do
     t.index ["created_at"], name: "index_audits_on_created_at", using: :btree
     t.index ["request_uuid"], name: "index_audits_on_request_uuid", using: :btree
     t.index ["user_id", "user_type"], name: "user_index", using: :btree
+  end
+
+  create_table "copy808_employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.string   "clock"
+    t.string   "sort"
+    t.integer  "active",     default: 1
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["clock", "name"], name: "index_employees_on_clock_and_name", unique: true, using: :btree
+  end
+
+  create_table "copy808_stf_employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "name"
+    t.string   "clocknum"
+    t.integer  "active_status", default: 1
+    t.integer  "sort"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",    default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["clocknum", "name"], name: "index_stf_employees_on_clocknum_and_name", unique: true, using: :btree
+  end
+
+  create_table "copy810_employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.string   "clock"
+    t.string   "sort"
+    t.integer  "active",     default: 1
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["clock", "name"], name: "index_employees_on_clock_and_name", unique: true, using: :btree
   end
 
   create_table "copy_employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -380,6 +410,29 @@ ActiveRecord::Schema.define(version: 50161230223313) do
     t.index ["parking_pass"], name: "parking_pass", unique: true, using: :btree
   end
 
+  create_table "pr_performance_reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "assigned_to_reviewer",  limit: 254
+    t.integer  "employee_id"
+    t.date     "review_date"
+    t.text     "strengths",             limit: 65535
+    t.text     "opportunities",         limit: 65535
+    t.text     "development_growth",    limit: 65535
+    t.text     "hr_comment",            limit: 65535
+    t.text     "employee_comment",      limit: 65535
+    t.text     "sigpad_employee",       limit: 65535
+    t.text     "sigpad_supervisor",     limit: 65535
+    t.text     "sigpad_hr",             limit: 65535
+    t.string   "supervisor_approval"
+    t.string   "hr_manager_approval"
+    t.string   "dept_manager_approval"
+    t.date     "scheduling_date"
+    t.integer  "sort_order"
+    t.integer  "active_status"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["employee_id"], name: "index_pr_performance_reviews_on_employee_id", using: :btree
+  end
+
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "description"
@@ -532,9 +585,9 @@ ActiveRecord::Schema.define(version: 50161230223313) do
     t.string   "crypted_password"
     t.string   "salt"
     t.integer  "role_id"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.string   "encrypted_password",                 default: "",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "encrypted_password"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -652,11 +705,12 @@ ActiveRecord::Schema.define(version: 50161230223313) do
   add_foreign_key "dc_disciplines", "dc_streams"
   add_foreign_key "dc_disciplines", "employees"
   add_foreign_key "employee_issue_notes", "employees"
-  add_foreign_key "employee_issue_notes", "users"
+  add_foreign_key "employee_issue_notes", "users_dc", column: "user_id", name: "employee_issue_notes_ibfk_1"
   add_foreign_key "incidents", "corrective_actions"
   add_foreign_key "incidents", "employees"
   add_foreign_key "incidents", "inci_assets"
   add_foreign_key "incidents", "users"
+  add_foreign_key "pr_performance_reviews", "employees"
   add_foreign_key "tr_training_employees", "stf_employees"
   add_foreign_key "tr_training_employees", "tr_training_records"
   add_foreign_key "tr_training_records", "stf_assets"

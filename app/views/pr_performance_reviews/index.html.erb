@@ -1,0 +1,99 @@
+
+<row class="row is-table-row" >
+
+<!-- 
+<div class="col-sm-1 ">
+    <%= link_to 'Create', new_pr_performance_review_path , class: "btn btn-success"%>
+  </div>
+ -->
+
+  <div class="col-sm-2 ">
+    <h4>Listing Pr Performance Reviews</h4>
+  </div>
+
+  <div class="col-sm-3">
+    <%= search_form_for @q, class: 'search-form' do |f| %>
+      <div class="input-group">
+        <%= f.search_field :assigned_to_reviewer_cont, class: 'form-control' %>
+        <span class="input-group-btn">
+          <button class="btn btn-primary">Search <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4 ">
+    <%= paginate @pr_performance_reviews %>
+  </div>
+  
+  <div class="col-sm-2 ">
+    <%= page_entries_info @pr_performance_reviews, :entry_name => 'item' %>
+  </div>
+  
+</row>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+            <th>Assigned to reviewer</th>
+      <th>Employee</th>
+      <th>Review date</th>
+      <th>Supervisor approval</th>
+      <th>Hr manager approval</th>
+      <!-- <th>Strengths</th> -->
+      <!-- <th>Opportunities</th> -->
+      <!-- <th>Development growth</th> -->
+      <!-- <th>Hr comment</th> -->
+      <!-- <th>Employee comment</th> -->
+      <!-- <th>Sigpad employee</th> -->
+      <!-- <th>Sigpad supervisor</th> -->
+      <!-- <th>Sigpad hr</th> -->
+			
+      <!-- <th>Dept manager approval</th> -->
+      <!-- <th>Scheduling date</th> -->
+      <!-- <th>Sort order</th> -->
+      <!-- <th>Active status</th> -->     
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pr_performance_reviews.each do |pr_performance_review| %>
+      <tr>
+        <td>
+          <div class="btn-group">
+          <%= link_to 'Show', pr_performance_review, class: "btn btn-info", :style=>'color:#FFFFFF;' %>
+          <%= link_to 'Edit', edit_pr_performance_review_path(pr_performance_review), class: "btn btn-primary", :style=>'color:#FFFFFF;' %>
+          <%#= link_to 'Destroy', pr_performance_review, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning", :style=>'color:#FFFFFF;' %>
+          </div>
+        </td>
+        
+        <td><%= pr_performance_review.assigned_to_reviewer %></td>
+        <td><%= pr_performance_review.employee %></td>
+        <td><%= pr_performance_review.review_date %></td>
+        <td><%= pr_performance_review.supervisor_approval %></td>
+        <td><%= pr_performance_review.hr_manager_approval %></td> 
+
+        <!-- <td><%= pr_performance_review.strengths %></td> -->
+        <!-- <td><%= pr_performance_review.opportunities %></td> -->
+        <!-- <td><%= pr_performance_review.development_growth %></td> -->
+        <!-- <td><%= pr_performance_review.hr_comment %></td> -->
+        <!-- <td><%= pr_performance_review.employee_comment %></td> -->
+        <!-- <td><%= pr_performance_review.sigpad_employee %></td> -->
+        <!-- <td><%= pr_performance_review.sigpad_supervisor %></td> -->
+        <!-- <td><%= pr_performance_review.sigpad_hr %></td> -->
+        <!-- <td><%= pr_performance_review.dept_manager_approval %></td> -->
+        <!-- <td><%= pr_performance_review.scheduling_date %></td> -->
+        <!-- <td><%= pr_performance_review.sort_order %></td> -->
+        <!-- <td><%= pr_performance_review.active_status %></td> -->
+
+
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
