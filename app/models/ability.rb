@@ -18,7 +18,8 @@ class Ability
       can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
       # can :read, :all 
-      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian, EmployeeIssueNote, PrPerformanceReview ]
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian, 
+                EmployeeIssueNote, PrPerformanceReview ]
       # can edit these..
       can [ :create, :update, ], [ DcDiscipline, PpParkingpass, User, EmployeeIssueNote, PrPerformanceReview ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
@@ -33,8 +34,9 @@ class Ability
       can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
       # can :read, :all 
-      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian, EmployeeIssueNote ]
-      can [ :create, :update, ], [ DcDiscipline, PpParkingpass , EmployeeIssueNote]
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, PapertrailTable, User, Role, EmpHomephone , EmpEnterprise, EmpCeridian,
+                 EmployeeIssueNote,  PrPerformanceReview  ]
+      can [ :create, :update, ], [ DcDiscipline, PpParkingpass , EmployeeIssueNote,  PrPerformanceReview ]
       # can [ :create, :update, ], [ Product , Pfeature, ProductFeature, CountryOfOrigin  ]
       # can [ :destroy, ], [ PpParkingpass  ]
       can :export,  :all 
@@ -44,8 +46,8 @@ class Ability
       can :access, :rails_admin       
       # can :dashboard                  # allow access to dashboard
       can :show_in_app, :all
-      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, Role , EmployeeIssueNote , User]
-      can [ :update, ], [ DcDiscipline,  EmployeeIssueNote ]
+      can :read,  [ DcDiscipline, DcLevel, DcStream, Employee, PpParkingpass, Role , EmployeeIssueNote , User,  PrPerformanceReview]
+      can [ :update, ], [ DcDiscipline,  EmployeeIssueNote,   PrPerformanceReview ]
       can [ :create, ], [  EmployeeIssueNote ]
       # can :read, [  Role, User, ]
       # can :read, [  Answer, PartNumber, ProcessStep,  Question, Survey, QuestionList ]

@@ -1,4 +1,7 @@
 class PrPerformanceReview < ApplicationRecord
+
+  has_paper_trail class_name: 'PapertrailTable'
+
   belongs_to :employee
 
   default_scope { order(review_date: :desc).order(supervisor_approval: :asc).order(assigned_to_reviewer: :asc) }

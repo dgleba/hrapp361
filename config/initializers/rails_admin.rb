@@ -90,10 +90,22 @@ RailsAdmin.config do |config|
       # field :id do
         # sort_reverse false  # this seemed to prevent any from showing in the list view.
       # end
+      exclude_fields   :sigpad_supervisor,  :sigpad_hr, :dept_manager_approval, :scheduling_date, :review_date_1, :versions # but you still can remove fields
+      exclude_fields :active_status, :sort_order, :title  # but you still can remove fields
+      field :employee do
+        queryable true
+        searchable [ :name, :clock ]
+      end
     end 
     
 
     edit do
+
+      include_fields :reviewtype, :assigned_to_reviewer, :employee, :next_review_date,   
+      :strengths, :opportunities, :development_growth, 
+      :employee_comment, :hr_comment, :supervisor_approval, 
+      :sigpad_employee, :hr_manager_approval, :review_date
+
       #include_all_fields # all other default fields will be added after, conveniently
       exclude_fields  :sigpad_employee, :sigpad_supervisor,  :sigpad_hr, :dept_manager_approval, :scheduling_date, :review_date_1, :versions # but you still can remove fields
       exclude_fields :active_status, :sort_order, :title  # but you still can remove fields
@@ -113,9 +125,12 @@ RailsAdmin.config do |config|
         help 'By typing in their own name, the HR Manager approves this discipline. The person should type their own name in this box for themself only.'
       end
         
+      field :next_review_date do
+        help 'During scheduling/assignment, do not enter any other fields below this.'  
+      end
+        
       #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
       field :employee do
-          help 'During scheduling, do not enter any other fields below this.'
           associated_collection_cache_all false
           associated_collection_scope do
             Proc.new { |scope|

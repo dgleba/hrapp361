@@ -38,6 +38,7 @@
   <thead>
     <tr>
       <th colspan="1"></th>
+      <th>Created_at</th>
             <th>Assigned to reviewer</th>
       <th>Employee</th>
       <th>Review date</th>
@@ -71,6 +72,7 @@
           </div>
         </td>
         
+        <td><%= pr_performance_review.created_at.strftime("%b-%d ") if pr_performance_review.created_at.present? %></td>
         <td><%= pr_performance_review.assigned_to_reviewer %></td>
         <td><%= pr_performance_review.employee %></td>
         <td><%= pr_performance_review.review_date %></td>

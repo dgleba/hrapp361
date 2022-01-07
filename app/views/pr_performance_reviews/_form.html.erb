@@ -26,10 +26,11 @@ Note: editing this form after employee signature will erase the signature upon s
 
   <div class="form-inputs">
   <%= f.association :employee , readonly: true, disabled: true %>
+  <%= f.input :review_date, as: :date, html5: true, input_html: { value: Date.today.to_s }  %>
   
   <%= f.input :strengths %>
   <%= f.input :opportunities %>
-  <%= f.input :development_growth %>
+  <%= f.input :development_growth ,  hint: 'DevelopmentGrowth: These are hints of what to enter in this box.'%>
   <%= f.input :employee_comment %>
   
 
@@ -92,17 +93,16 @@ Note: editing this form after employee signature will erase the signature upon s
 
     <div>
     <br>
-      Supervisor: When the employee signs it, 1. Type your name below to approve the review and 2. set the date at the same time before pressing save.
+      Supervisor: When the employee signs it,  Type your name below to approve the review.
 <br>
 <br>
-      Note: Saving this form after employee signature was saved will ERASE the signature. [ After saving, you can see the saved signature by pressing the show button. ]
+      Note: Saving this form after employee signature was saved will ERASE the signature. You get only one chance to save this section. [ After saving, you can see the saved signature by pressing the show button. ]
 
       <br>
       </div>
       <br>
   <%= f.input :supervisor_approval %>
-  <%= f.input :review_date, as: :date, html5: true %>
-  
+
   
   <%#= f.input :hr_comment %>
   <%#= f.input :sigpad_supervisor %>
