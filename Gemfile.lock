@@ -147,7 +147,7 @@ GEM
     multi_json (1.12.1)
     mysql2 (0.4.5)
     nested_form (0.3.2)
-    net-ldap (0.16.0)
+    net-ldap (0.17.1)
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
