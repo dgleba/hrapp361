@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 50161230223314) do
+ActiveRecord::Schema.define(version: 50161230223315) do
 
   create_table "about_incidents_reader", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "info", limit: 65535, null: false
@@ -100,6 +100,56 @@ ActiveRecord::Schema.define(version: 50161230223314) do
     t.string "status",          limit: 3
     t.string "supervisor",      limit: 39
     t.string "clock_entpr",     limit: 39
+  end
+
+  create_table "copy_pr_performance_reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "reviewtype"
+    t.string   "assigned_to_reviewer",  limit: 254
+    t.integer  "employee_id"
+    t.date     "review_date"
+    t.text     "strengths",             limit: 65535
+    t.text     "opportunities",         limit: 65535
+    t.text     "development_growth",    limit: 65535
+    t.text     "employee_comment",      limit: 65535
+    t.text     "hr_comment",            limit: 65535
+    t.text     "sigpad_employee",       limit: 65535
+    t.text     "sigpad_supervisor",     limit: 65535
+    t.text     "sigpad_hr",             limit: 65535
+    t.string   "supervisor_approval"
+    t.string   "hr_manager_approval"
+    t.string   "dept_manager_approval"
+    t.date     "scheduling_date"
+    t.date     "next_review_date"
+    t.date     "review_date_1"
+    t.integer  "sort_order"
+    t.integer  "active_status"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["employee_id"], name: "index_pr_performance_reviews_on_employee_id", using: :btree
+  end
+
+  create_table "copy_pr_performance_reviews01", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "reviewtype"
+    t.string   "assigned_to_reviewer",  limit: 254
+    t.integer  "employee_id"
+    t.date     "review_date"
+    t.text     "strengths",             limit: 65535
+    t.text     "opportunities",         limit: 65535
+    t.text     "development_growth",    limit: 65535
+    t.text     "employee_comment",      limit: 65535
+    t.text     "hr_comment",            limit: 65535
+    t.text     "sigpad_employee",       limit: 65535
+    t.text     "sigpad_supervisor",     limit: 65535
+    t.text     "sigpad_hr",             limit: 65535
+    t.string   "supervisor_approval"
+    t.string   "hr_manager_approval"
+    t.string   "dept_manager_approval"
+    t.date     "scheduling_date"
+    t.integer  "sort_order"
+    t.integer  "active_status"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["employee_id"], name: "index_pr_performance_reviews_on_employee_id", using: :btree
   end
 
   create_table "corrective_actions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -411,25 +461,29 @@ ActiveRecord::Schema.define(version: 50161230223314) do
   end
 
   create_table "pr_performance_reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "assigned_to_reviewer",  limit: 254
+    t.string   "reviewtype"
+    t.string   "assigned_to_reviewer",     limit: 254
     t.integer  "employee_id"
     t.date     "review_date"
-    t.text     "strengths",             limit: 65535
-    t.text     "opportunities",         limit: 65535
-    t.text     "development_growth",    limit: 65535
-    t.text     "hr_comment",            limit: 65535
-    t.text     "employee_comment",      limit: 65535
-    t.text     "sigpad_employee",       limit: 65535
-    t.text     "sigpad_supervisor",     limit: 65535
-    t.text     "sigpad_hr",             limit: 65535
+    t.text     "strengths",                limit: 65535
+    t.text     "opportunities",            limit: 65535
+    t.text     "development_growth",       limit: 65535
+    t.text     "employee_comment",         limit: 65535
+    t.text     "hr_comment",               limit: 65535
+    t.text     "sigpad_employee",          limit: 65535
+    t.text     "sigpad_supervisor",        limit: 65535
+    t.text     "sigpad_hr",                limit: 65535
     t.string   "supervisor_approval"
     t.string   "hr_manager_approval"
     t.string   "dept_manager_approval"
     t.date     "scheduling_date"
+    t.date     "next_review_date"
+    t.date     "review_date_1"
     t.integer  "sort_order"
     t.integer  "active_status"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "developmment_growth_bump"
     t.index ["employee_id"], name: "index_pr_performance_reviews_on_employee_id", using: :btree
   end
 
@@ -698,6 +752,22 @@ ActiveRecord::Schema.define(version: 50161230223314) do
     t.integer  "transaction_id"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
     t.index ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
+  end
+
+  create_table "zinreview", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "c1",         limit: 10
+    t.string  "num",        limit: 2
+    t.string  "ln",         limit: 21
+    t.string  "fn",         limit: 19
+    t.integer "een1"
+    t.string  "eenum",      limit: 6
+    t.string  "Position",   limit: 36
+    t.string  "ohire",      limit: 10
+    t.string  "sent",       limit: 10
+    t.string  "follow",     limit: 8
+    t.date    "datedone"
+    t.string  "Supervisor", limit: 18
+    t.string  "rtype",      limit: 3
   end
 
   add_foreign_key "corrective_actions", "incidents"

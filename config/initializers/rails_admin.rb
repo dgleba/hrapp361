@@ -127,7 +127,8 @@ RailsAdmin.config do |config|
         
       field :next_review_date do
         help 'During scheduling/assignment, do not enter any other fields below this.'  
-      end
+          default_value (Date.today+379).to_s(:long)
+        end
         
       #https://github.com/sferik/rails_admin/issues/1395  - rails admin associated_collection_scope
       field :employee do

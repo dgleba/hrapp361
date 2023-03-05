@@ -1,0 +1,18 @@
+
+=================================================
+2022-01-14
+
+
+nil class...
+
+          <!--<td><%= if pr_performance_review.sigpad_employee.length > 25 then '..' else 'UNsigned' end %></td> -->
+
+
+try:
+          <!--<td><%= if pr_performance_review && if pr_performance_review.sigpad_employee.length > 20 then '..' else 'UNsigned' end %></td> -->
+
+
+=================================================
+
+
+<td><%= if pr_performance_review.sigpad_employee then '..' else 'UNsigned' end %></td>

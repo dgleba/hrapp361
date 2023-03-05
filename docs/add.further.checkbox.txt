@@ -1,0 +1,21 @@
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#@  
+#@  
+#@  
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   2023-03-05[Mar-Sun]14-05PM 
+
+rails generate migration AddOpportunitiesBumpToPrPerformanceReviews developmment_growth_bump:boolean
+
+
+rails generate migration AddOpportunitiesBumpToPrPerformanceReviews opportunities_bump:boolean
+
+
+ref:
+https://stackoverflow.com/questions/21889353/ruby-rails-add-a-boolean-checkbox-column-into-existing-db-and-how-do-i-work-wi
+rake generate migration AddUserAgreementToUsers user_agreement:boolean
+
+
+opportunities_referral
+developmment_growth_referral
+

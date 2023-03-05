@@ -39,17 +39,19 @@
     <tr>
       <th colspan="1"></th>
       <th>Created_at</th>
-            <th>Assigned to reviewer</th>
+      <th>Assigned to reviewer</th>
       <th>Employee</th>
       <th>Review date</th>
       <th>Supervisor approval</th>
+      <th>Employee Signed</th>
       <th>Hr manager approval</th>
-      <!-- <th>Strengths</th> -->
-      <!-- <th>Opportunities</th> -->
-      <!-- <th>Development growth</th> -->
+      
+      <th>Strng</th> 
+      <th>Opprtn</th> 
+      <th>Devel</th> 
+      
       <!-- <th>Hr comment</th> -->
       <!-- <th>Employee comment</th> -->
-      <!-- <th>Sigpad employee</th> -->
       <!-- <th>Sigpad supervisor</th> -->
       <!-- <th>Sigpad hr</th> -->
 			
@@ -57,7 +59,8 @@
       <!-- <th>Scheduling date</th> -->
       <!-- <th>Sort order</th> -->
       <!-- <th>Active status</th> -->     
-
+      
+      <th>ID</th>
     </tr>
   </thead>
 
@@ -77,15 +80,22 @@
         <td><%= pr_performance_review.employee %></td>
         <td><%= pr_performance_review.review_date %></td>
         <td><%= pr_performance_review.supervisor_approval %></td>
-        <td><%= pr_performance_review.hr_manager_approval %></td> 
-
-        <!-- <td><%= pr_performance_review.strengths %></td> -->
-        <!-- <td><%= pr_performance_review.opportunities %></td> -->
-        <!-- <td><%= pr_performance_review.development_growth %></td> -->
-        <!-- <td><%= pr_performance_review.hr_comment %></td> -->
-        <!-- <td><%= pr_performance_review.employee_comment %></td> -->
-        <!-- <td><%= pr_performance_review.sigpad_employee %></td> -->
-        <!-- <td><%= pr_performance_review.sigpad_supervisor %></td> -->
+        
+        <td><%= if (pr_performance_review.sigpad_employee  &&  pr_performance_review.sigpad_employee.length > 25 )
+          then '..'   else 'UNsigned' end %>  </td>  
+          
+          <td><%= pr_performance_review.hr_manager_approval %></td> 
+          
+          <td><%= pr_performance_review.strengths.length if pr_performance_review.strengths.present? %></td>
+          <td><%= pr_performance_review.opportunities.length if pr_performance_review.opportunities.present? %></td> 
+          <td><%= pr_performance_review.development_growth.length if pr_performance_review.development_growth.present? %></td> 
+          
+          <td><%= pr_performance_review.id %></td>
+          
+          <!-- <td><%= pr_performance_review.hr_comment %></td> -->
+          <!-- <td><%= pr_performance_review.employee_comment %></td> -->
+          <!-- <td><%= pr_performance_review.sigpad_employee %></td> -->
+          <!-- <td><%= pr_performance_review.sigpad_supervisor %></td> -->
         <!-- <td><%= pr_performance_review.sigpad_hr %></td> -->
         <!-- <td><%= pr_performance_review.dept_manager_approval %></td> -->
         <!-- <td><%= pr_performance_review.scheduling_date %></td> -->

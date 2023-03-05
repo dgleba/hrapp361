@@ -4,13 +4,22 @@ class PrPerformanceReview < ApplicationRecord
 
   belongs_to :employee
 
-  default_scope { order(review_date: :desc).order(supervisor_approval: :asc).order(assigned_to_reviewer: :asc) }
-  
+  paginates_per 200
+    
+
+  # ccommented out default scope 2022-10-03 David Gleba.
+  # default_scope { order(review_date: :asc).order(supervisor_approval: :asc).order(assigned_to_reviewer: :asc).order(created_at: :asc) }
+
   # rails admin will obey this. I want rails admin to see them all.
   # default_scope { where('employee_issue_notes.created_at > ?', 8.days.ago) }
   
   
-  scope :ondeck,  -> { where('assigned_to_reviewer <> ? and hr_manager_approval = ?', '', ''  )  }
+  scope :ondeck,  -> {  where('assigned_to_reviewer <> ? and hr_manager_approval = ?', '', ''  ).order(supervisor_approval: :asc).order(assigned_to_reviewer: :asc).order(created_at: :asc) }
+
+  # scope :ondeck03,  -> {  where('assigned_to_reviewer <> ? and hr_manager_approval = ?', '', ''  ).order(review_date: :asc).order(supervisor_approval: :asc).order(assigned_to_reviewer: :asc) }
+  # scope :ondeck02,  -> {  where('assigned_to_reviewer <> ? and hr_manager_approval = ?', '', ''  ).order(review_date: :asc).order(supervisor_approval: :asc).order(assigned_to_reviewer: :asc) }
+  # scope :ondeck01,  -> { where('assigned_to_reviewer <> ? and hr_manager_approval = ?', '', ''  )  }
+
   # scope :ondeck2,  -> { where('supervisor_approval > ?',  "aa" )  }
   # scope :ondeck3,  -> { where('employee_id > ?',  7000 )  }
   # scope :ondeck4,  -> { where(supervisor_approval:  nil)  }
@@ -18,7 +27,7 @@ class PrPerformanceReview < ApplicationRecord
 
   # notes..
   # scope :t1,  -> { where(comment: > ?) }
-  #scope :lastfew1,  -> { where(created_at: 1.day.ago..Float::INFINITY) }
+  # scope :lastfew1,  -> { where(created_at: 1.day.ago..Float::INFINITY) }
   # scope :lastfew,  -> { where(":created_at > ? Date.now-3.days ) }
   # scope :last,  -> {where  :created_at >  Date.now-3.days }
   # example.. scope :due where(:progress_date < Date.now-7.days)
